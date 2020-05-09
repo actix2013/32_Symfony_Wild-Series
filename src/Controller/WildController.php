@@ -31,9 +31,9 @@ class WildController extends AbstractController
     }
 
     /**
-     * @Route("/wild/show", name="wild_show")
+     * @Route("/wild/show", name="wild_show", requirements={"page=movies"})
      */
-    public function show(): Response
+    public function show(string $movies): Response
     {
         // render twig
     }
