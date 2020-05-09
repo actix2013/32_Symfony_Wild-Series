@@ -1,0 +1,9 @@
+// assets/css/global.scss
+
+// customize some Bootstrap variables
+//$primary: darken(#428bca, 20%);
+$primary: lighten(slategray,20%);
+$secondary: lighten($primary,20%);
+
+// the ~ allows you to reference things in node_modules
+@import "~bootstrap/scss/bootstrap";
