@@ -30,4 +30,12 @@ class WildController extends AbstractController
 
     }
 
+    /**
+     * @Route("/wild/show", name="wild_show")
+     */
+    public function show(): Response
+    {
+        // render twig
+    }
+
 }
