@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class WildController
+ * Class WildController !
  *
  * @package App\Controller
  * @Route("/wild", name="wild_")
