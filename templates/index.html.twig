@@ -7,9 +7,17 @@
 {% block body %}
     <body class="bg-secondary">
     <h1>Bienvenue sur Wild Series !</h1>
-    <a href="{{ path('wild_show', {'page':"paroduit-1"}) }}">Afficher la page 1</a><br>
-    <a href="{{ path('wild_show', {'page':5}) }}">Afficher la page 5</a><br>
-    {{ dump(programs) }}
+    <a href="{{ path('wild_show', {'slug':"paroduit-1"}) }}">Afficher la page 1</a><br>
+    <a href="{{ path('wild_show', {'slug':5}) }}">Afficher la page 5</a><br>
+    {# templates/index.html.twig #}
+    <a href="{{ path('wild_show', { 'slug': "walking-dead" }) }}">
+        Testing show() method from WildController with a real program s slug.
+    </a>
+    <br>
+    <a href="{{ path('wild_index') }}">
+        Testing index() method from WildController to view all programs.
+    </a>
+
     </body>
     </html>
 {% endblock %}

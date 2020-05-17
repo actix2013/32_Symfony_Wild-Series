@@ -6,6 +6,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Program;
 
 /**
  * Class WildController !
@@ -16,18 +17,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class WildController extends AbstractController
 {
     /**
-     * @Route("/", name="wild_index")
+     * @Route("/", name="index")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index(): Response
     {
+
         $doctrine = $this->getDoctrine();
         $repository = $doctrine->getRepository(Program::class);
         $programs = $repository->findAll();
         if (!$programs) {
            throw $this->createNotFoundException("No program found in program's table");
         }
-        return $this->render('wild/index.html.twig', ['website' => 'Wild Séries',"programs" =>$programs]);
+       return $this->render('wild/index.html.twig', ['website' => 'Wild Séries', "programs" => $programs]);
         //return new Response('<html><body>Wild Series Index</body></html>');
     }
 
@@ -43,13 +45,28 @@ class WildController extends AbstractController
         //$test = preg_match_all("#$regmatchExemple#","produit-52",$matches);
         // var_dump($test);
         // var_dump($matches);
-        if (empty($slug)) {
-            $slug = "Aucune série sélectionnée, veuillez choisir une série";
-        } else {
-            $slug = str_replace("-", " ", $slug);
-            var_dump($slug);
-            $slug = ucwords($slug, " ");
+
+        if (!$slug) {
+            throw $this
+                ->createNotFoundException('No slug has been sent to find a program in program\'s table.');
         }
+        $slug = preg_replace(
+            '/-/',
+            ' ', ucwords(trim(strip_tags($slug)), "-")
+        );
+        $program = $this->getDoctrine()
+            ->getRepository(Program::class)
+            ->findOneBy(['title' => mb_strtolower($slug)]);
+        if (!$program) {
+            throw $this->createNotFoundException(
+                'No program with ' . $slug . ' title, found in program\'s table.'
+            );
+        }
+
+        return $this->render('wild/show.html.twig', [
+            'program' => $program,
+            'slug' => $slug,
+        ]);
         return $this->render('wild/show.html.twig', ['page' => $slug]);
     }
 
