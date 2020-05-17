@@ -35,7 +35,7 @@ class WildController extends AbstractController
 
 
     /**
-     * @Route("/show/{slug<^[a-z0-9.-]*$>}", name="show")
+     * @Route("/show/{slug<^[a-zA-Z0-9.-]*$>}", name="show")
      */
     public function show(string $slug): Response
     {
