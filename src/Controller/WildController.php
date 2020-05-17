@@ -21,7 +21,13 @@ class WildController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('wild/index.html.twig', ['website' => 'Wild Séries',]);
+        $doctrine = $this->getDoctrine();
+        $repository = $doctrine->getRepository(Program::class);
+        $programs = $repository->findAll();
+        if (!$programs) {
+           throw $this->createNotFoundException("No program found in program's table");
+        }
+        return $this->render('wild/index.html.twig', ['website' => 'Wild Séries',"programs" =>$programs]);
         //return new Response('<html><body>Wild Series Index</body></html>');
     }
 
