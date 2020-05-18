@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Program;
+use App\Entity\Category;
 
 /**
  * Class WildController !
@@ -70,8 +71,53 @@ class WildController extends AbstractController
         return $this->render('wild/show.html.twig', ['page' => $slug]);
     }
 
+    /**
+     * @Route("/category/{categoryName}", name="category")
+     */
+    public function showByCategory(string $categoryName): Response
+    {
+
+        if (!$categoryName) {
+            throw $this
+                ->createNotFoundException('No cathegory has been sent to find this category in category\'s table.');
+        }
+
+        $category = $this->getDoctrine()
+            ->getRepository(Category::class)
+            ->findOneBy([
+                'name' => mb_strtolower($categoryName)
+            ]);
+        if (!$category) {
+            throw $this->createNotFoundException(
+                'No program with ' . $categoryName . ' title, found in program\'s table.'
+            );
+        }
+
+        $programsRepository = $this->getDoctrine()
+            ->getRepository(Program::class);
+        $query = $programsRepository->createQueryBuilder('p')
+            ->where('p.category = :cat')
+            ->setParameter('cat', $category)
+            ->orderBy('p.title', 'ASC')
+            ->getQuery();
+
+
+        $programs = $query->setMaxResults(3)->getResult();
+        if (!$programs) {
+            throw $this->createNotFoundException(
+                "No program find for category $category->getName()"
+            );
+        }
+
+        return $this->render('wild/category.html.twig', [
+            'categoryName' => $category->getName(),
+            "programs" => $programs,
+        ]);
+
+    }
 
     /**
+     * default route if no match
      * @Route("/show/{page}", name="show_default")
      */
     public function showNoMatch(string $page = "empty"): Response
@@ -84,6 +130,7 @@ class WildController extends AbstractController
         }
 
     }
+
 
 
     /**

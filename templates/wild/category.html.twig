@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Programs category {{ categoryName }}{% endblock %}
+
+{% block body %}
+    <h1>Les 3 premieres series de la cathégoie {{ categoryName }} : </h1>
+    {% for program in programs %}
+        <div>
+            <h2>{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
+            <p>{{ program.summary }}</p>
+        </div>
+    {% else %}
+        Aucune série trouvée.
+    {% endfor %}
+    <a href="{{ path('app_index') }}">
+        Retour à l'accueil
+    </a>
+{% endblock %}
