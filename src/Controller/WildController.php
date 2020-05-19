@@ -93,6 +93,7 @@ class WildController extends AbstractController
             );
         }
 
+        $programsRepository = null;
         //<editor-fold desc="Methode  pour lire les objets , pas la bonne methode">
         $programsRepository = $this->getDoctrine()
             ->getRepository(Program::class);
@@ -103,7 +104,8 @@ class WildController extends AbstractController
             ->getQuery();
         $programs = $query->setMaxResults(3)->getResult();
         //</editor-fold>
-$category->
+
+
         if (!$programs) {
             throw $this->createNotFoundException(
                 "No program find for category $category->getName()"
