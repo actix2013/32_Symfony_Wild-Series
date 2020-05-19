@@ -3,11 +3,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Program;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\Program;
 use App\Entity\Category;
+
+
 
 /**
  * Class WildController !
@@ -58,12 +60,12 @@ class WildController extends AbstractController
         $program = $this->getDoctrine()
             ->getRepository(Program::class)
             ->findOneBy(['title' => mb_strtolower($slug)]);
+
         if (!$program) {
             throw $this->createNotFoundException(
                 'No program with ' . $slug . ' title, found in program\'s table.'
             );
         }
-
         return $this->render('wild/show.html.twig', [
             'program' => $program,
             'slug' => $slug,
@@ -93,8 +95,10 @@ class WildController extends AbstractController
             );
         }
 
+
+
+        //<editor-fold desc="Methode  pour lire les objets programs a partir de programs = pas la bonne methode">
         $programsRepository = null;
-        //<editor-fold desc="Methode  pour lire les objets , pas la bonne methode">
         $programsRepository = $this->getDoctrine()
             ->getRepository(Program::class);
         $query = $programsRepository->createQueryBuilder('p')
