@@ -3,9 +3,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Program;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Category;
+
+
 
 /**
  * Class WildController !
@@ -16,18 +20,25 @@ use Symfony\Component\Routing\Annotation\Route;
 class WildController extends AbstractController
 {
     /**
-     * @Route("/", name="wild_index")
+     * @Route("/", name="index")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index(): Response
     {
-        return $this->render('wild/index.html.twig', ['website' => 'Wild Séries',]);
+
+        $doctrine = $this->getDoctrine();
+        $repository = $doctrine->getRepository(Program::class);
+        $programs = $repository->findAll();
+        if (!$programs) {
+           throw $this->createNotFoundException("No program found in program's table");
+        }
+       return $this->render('wild/index.html.twig', ['website' => 'Wild Séries', "programs" => $programs]);
         //return new Response('<html><body>Wild Series Index</body></html>');
     }
 
 
     /**
-     * @Route("/show/{slug<^[a-z0-9.-]*$>}", name="show")
+     * @Route("/show/{slug<^[a-zA-Z0-9.-]*$>}", name="show")
      */
     public function show(string $slug): Response
     {
@@ -37,18 +48,89 @@ class WildController extends AbstractController
         //$test = preg_match_all("#$regmatchExemple#","produit-52",$matches);
         // var_dump($test);
         // var_dump($matches);
-        if (empty($slug)) {
-            $slug = "Aucune série sélectionnée, veuillez choisir une série";
-        } else {
-            $slug = str_replace("-", " ", $slug);
-            var_dump($slug);
-            $slug = ucwords($slug, " ");
+
+        if (!$slug) {
+            throw $this
+                ->createNotFoundException('No slug has been sent to find a program in program\'s table.');
         }
+        $slug = preg_replace(
+            '/-/',
+            ' ', ucwords(trim(strip_tags($slug)), "-")
+        );
+        $program = $this->getDoctrine()
+            ->getRepository(Program::class)
+            ->findOneBy(['title' => mb_strtolower($slug)]);
+
+        if (!$program) {
+            throw $this->createNotFoundException(
+                'No program with ' . $slug . ' title, found in program\'s table.'
+            );
+        }
+        //var_dump($program);
+        return $this->render('wild/show.html.twig', [
+            'program' => $program,
+            'slug' => $slug,
+        ]);
         return $this->render('wild/show.html.twig', ['page' => $slug]);
     }
 
+    /**
+     * @Route("/category/{categoryName}", name="category")
+     */
+    public function showByCategory(string $categoryName): Response
+    {
+
+        if (!$categoryName) {
+            throw $this
+                ->createNotFoundException('No cathegory has been sent to find this category in category\'s table.');
+        }
+
+        $category = $this->getDoctrine()
+            ->getRepository(Category::class)
+            ->findOneBy([
+                'name' => mb_strtolower($categoryName)
+            ]);
+        if (!$category) {
+            throw $this->createNotFoundException(
+                'No program with ' . $categoryName . ' title, found in program\'s table.'
+            );
+        }
+
+        //<editor-fold desc="Methode  pour lire les objets via findby">
+        $programsRepository = null;
+        $programsRepository = $this->getDoctrine()
+            ->getRepository(Program::class);
+        $programsByFindBy = $programsRepository->findBy(["category" => $category],["id" => "DESC"],3);
+        //</editor-fold>
+
+        //<editor-fold desc="Methode  pour lire les objets via query symfony">
+        $programsRepository = null;
+        $programsRepository = $this->getDoctrine()
+            ->getRepository(Program::class);
+        $query = $programsRepository->createQueryBuilder('p')
+            ->where('p.category = :cat')
+            ->setParameter('cat', $category)
+            ->orderBy('p.title', 'ASC')
+            ->getQuery();
+        $programs = $query->setMaxResults(3)->getResult();
+        //</editor-fold>
+
+
+        if (!$programsByFindBy) {
+            throw $this->createNotFoundException(
+                "No program find for category $category->getName()"
+            );
+        }
+
+        return $this->render('wild/category.html.twig', [
+            'categoryName' => $category->getName(),
+            "programs" => $programsByFindBy,
+        ]);
+
+    }
 
     /**
+     * default route if no match
      * @Route("/show/{page}", name="show_default")
      */
     public function showNoMatch(string $page = "empty"): Response
@@ -61,6 +143,7 @@ class WildController extends AbstractController
         }
 
     }
+
 
 
     /**
