@@ -100,7 +100,7 @@ class WildController extends AbstractController
         $programsRepository = null;
         $programsRepository = $this->getDoctrine()
             ->getRepository(Program::class);
-        $programsByFindBy = $programsRepository->findBy(["category" => $category],["title" => "ASC"],3);
+        $programsByFindBy = $programsRepository->findBy(["category" => $category],["id" => "DESC"],3);
         //</editor-fold>
 
         //<editor-fold desc="Methode  pour lire les objets via query symfony">
