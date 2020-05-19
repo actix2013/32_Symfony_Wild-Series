@@ -50,8 +50,10 @@ class WildController extends AbstractController
         // var_dump($matches);
 
         if (!$slug) {
-            throw $this
-                ->createNotFoundException('No slug has been sent to find a program in program\'s table.');
+
+                $message = "Aucune série sélectionnée, veuillez choisir une série !";
+                $function = __FUNCTION__;
+                return $this->goTo404($message,$function,true);
         }
         $slug = preg_replace(
             '/-/',
@@ -62,9 +64,9 @@ class WildController extends AbstractController
             ->findOneBy(['title' => mb_strtolower($slug)]);
 
         if (!$program) {
-            throw $this->createNotFoundException(
-                'No program with ' . $slug . ' title, found in program\'s table.'
-            );
+            $message = "La serie [ $slug ] n'a pas été trouvée dans la database.";
+            $function = __FUNCTION__;
+            return $this->goTo404($message, $function);
         }
         //var_dump($program);
         return $this->render('wild/show.html.twig', [
@@ -163,5 +165,19 @@ class WildController extends AbstractController
 
         return $this->redirectToRoute('wild_show', ['page' => 1]);
     }*/
+
+    private function goTo404(string $message , string $funtion, bool $displayOnlyMessage=false){
+        try {
+            $msgBefore = "";
+            $msgAfter = "";
+            if(!$displayOnlyMessage){
+                $msgBefore = " 404 - Bad URL: ";
+                $msgAfter = " Origine du  message: [ " . $funtion . " ]";
+            }
+            throw $this->createNotFoundException($msgBefore . $message );
+        } catch (\Exception $e) {
+                return $this->render('_404.html.twig', ['msg' => $e->getMessage(),"msgAfter" => $msgAfter]);
+        }
+    }
 
 }
