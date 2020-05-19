@@ -66,6 +66,7 @@ class WildController extends AbstractController
                 'No program with ' . $slug . ' title, found in program\'s table.'
             );
         }
+        //var_dump($program);
         return $this->render('wild/show.html.twig', [
             'program' => $program,
             'slug' => $slug,
@@ -95,9 +96,14 @@ class WildController extends AbstractController
             );
         }
 
+        //<editor-fold desc="Methode  pour lire les objets via findby">
+        $programsRepository = null;
+        $programsRepository = $this->getDoctrine()
+            ->getRepository(Program::class);
+        $programsByFindBy = $programsRepository->findBy(["category" => $category],["title" => "ASC"],3);
+        //</editor-fold>
 
-
-        //<editor-fold desc="Methode  pour lire les objets programs a partir de programs = pas la bonne methode">
+        //<editor-fold desc="Methode  pour lire les objets via query symfony">
         $programsRepository = null;
         $programsRepository = $this->getDoctrine()
             ->getRepository(Program::class);
@@ -110,7 +116,7 @@ class WildController extends AbstractController
         //</editor-fold>
 
 
-        if (!$programs) {
+        if (!$programsByFindBy) {
             throw $this->createNotFoundException(
                 "No program find for category $category->getName()"
             );
@@ -118,7 +124,7 @@ class WildController extends AbstractController
 
         return $this->render('wild/category.html.twig', [
             'categoryName' => $category->getName(),
-            "programs" => $programs,
+            "programs" => $programsByFindBy,
         ]);
 
     }
