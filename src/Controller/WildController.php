@@ -50,7 +50,6 @@ class WildController extends AbstractController
         // var_dump($matches);
 
         if (!$slug) {
-
                 $message = "Aucune série sélectionnée, veuillez choisir une série !";
                 $function = __FUNCTION__;
                 return $this->goTo404($message,$function,true);
@@ -130,6 +129,72 @@ class WildController extends AbstractController
         ]);
 
     }
+
+    /**
+     * @Route("/program/{programName}", name="program")
+     */
+    public function showByProgram(string $programName): Response
+    {
+
+        if (!$programName) {
+            $message = "Impossible d'afficher le programme , demande de programme vide.";
+            $function = __FUNCTION__;
+            return $this->goTo404($message, $function, true);
+        }
+        $programName = preg_replace(
+        '/-/',
+        ' ', ucwords(trim(strip_tags($programName)), "-"));
+
+        $program = $this->getDoctrine()
+            ->getRepository(Program::class)
+            ->findOneBy([
+                'title' => mb_strtolower($programName)
+            ]);
+
+        if (!$program) {
+            $message = "Impossible d'afficher le programme demandé ( $programName ) n'a pas été trouver dans la base.";
+            $function = __FUNCTION__;
+            return $this->goTo404($message, $function, false);
+        }
+        $seasons = $program->getSeasons();
+
+        $complexSeasons = [];
+        $numbers = array(
+            1 => "One",
+            2 => "Two",
+            3 => "Three",
+            4 => "four",
+            5 => "five",
+            6 => "six",
+            7 => "seven",
+            8 => "eight",
+            9 => "nine",
+            10 => "ten",
+            11 => "eleven",
+            12 => "twelve",
+            13 => "thirteen",
+            14 => "fourteen",
+            15 => "fifteen",
+            16 => "sixteen",
+            17 => "seventeen",
+            18 => "eighteen",
+            19 => "nineteen"
+        );
+        foreach ($seasons as $season) {
+            $complexSeasons[] = [
+            "season" =>$season,
+            "stringNumber" =>ucfirst($numbers[$season->getNumber()])
+            ];
+        }
+
+        return $this->render('wild/program.html.twig', [
+            'program' => $program,
+            "complexSeasons" => $complexSeasons,
+
+        ]);
+
+    }
+
 
     /**
      * default route if no match

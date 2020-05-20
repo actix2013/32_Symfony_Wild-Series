@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Program details {% endblock %}
+
+{% block body %}
+    <div class="container-fluid ">
+        <h1>Liste des saisons pour le programme {{ program.title }} : </h1>
+        <h2> {{ program.title }} - Catégorie : {{ program.category.name }} </h2>
+        <p>{{ program.summary }}</p>
+        <div class="container">
+            {% for complex in  complexSeasons %}
+                <div id="accordion">
+                    <div class="card border border-dark bg-danger mt-5">
+                        <div class="card-header text-white bg-dark" id="heading{{ complex.stringNumber }}">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{ complex.stringNumber }}"
+                                        aria-expanded="true"
+                                        aria-controls="collapse{{ complex.stringNumber }}">
+                                    {{ program.title }} saison {{ complex.season.number }} - Catégorie
+                                    : {{ program.category.name }}
+                                    ( {{ complex.season.year }} )
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapse{{ complex.stringNumber}}" class="collapse show"
+                             aria-labelledby="heading{{ complex.stringNumber }}"
+                             data-parent="#accordion">
+                            <div class="card-body">
+                                {{ complex.season.description }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                Aucune saison trouvée.
+            {% endfor %}
+            <a href="{{ path('app_index') }}">
+                Retour à l'accueil
+            </a>
+        </div>
+    </div>
+
+
+{% endblock %}
