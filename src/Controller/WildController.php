@@ -90,12 +90,6 @@ class WildController extends AbstractController
      */
     public function show(string $slug): Response
     {
-        //$regmatchExemple = "^[a-zA-Z0-9_.-]*$";
-        //$regNotWork = "(^[a - z0 - 9. -]{1,})$";
-        // $matches=[];
-        //$test = preg_match_all("#$regmatchExemple#","produit-52",$matches);
-        // var_dump($test);
-        // var_dump($matches);
 
         if (!$slug) {
                 $message = "Aucune série sélectionnée, veuillez choisir une série !";
@@ -274,11 +268,9 @@ class WildController extends AbstractController
     public function showNoMatch(string $page = "empty"): Response
     {
 
-        try {
-            throw $this->createNotFoundException('404 - Bad URL : ' . $page . "in [Function : ".  __FUNCTION__ ."]");
-        } catch (\Exception $e) {
-            return $this->render('_404.html.twig', ['msg' => $e->getMessage()]);
-        }
+        $message = "Demande intercepté par une route de recupération pour [show] , la demande ne respecte pas les critere de  filtres. ";
+        $function = __FUNCTION__;
+        return $this->goTo404($message, $function, false);
 
     }
 
