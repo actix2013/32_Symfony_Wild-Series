@@ -162,3 +162,22 @@ body {
     }
   }
 }
+
+.myNavbar{
+
+  /* title afficher les options */
+  a {
+    font-size: 1.05rem;
+    color: white;
+    text-decoration: none;
+
+  }
+
+  a:hover {
+    color: white;
+    text-decoration: none;
+    font-size: 1.08rem;
+  }
+
+
+}
