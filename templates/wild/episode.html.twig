@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Episode details {{ episode.title }}{% endblock %}
+
+{% block body %}
+
+
+    <div class="container myEpisode">
+        <hr>
+        <h1> Episode : {{ episode.title }}  </h1>
+        <h4> Episode number : {{ episode.number }} : </h4>
+        <h4> Episode synopsis : {{ episode.synopsis }} </h4>
+        <hr>
+        <div>
+            <h1> {{ episode.title }} season details : </h1>
+            <h4> Season number : {{ season.number }} : </h4>
+            <p> Season description : {{ season.description }} </p>
+            <a class="h5 text-dark" href="{{ path('wild_season', { 'id': season.id }) }}">
+                Show episodes of this season
+            </a>
+        </div>
+        <hr>
+        <div>
+            <h1> Program : {{ program.title }} : </h1>
+            <h4> Program sumary : {{ program.summary }} </h4>
+            <a class="h5 text-dark"
+               href="{{ path('wild_show', { 'slug':program
+                   .title|replace({" ": "-"}) }) }}">
+                Show program details.
+            </a> <br>
+            <a class="h5 text-dark"
+               href="{{ path('wild_program', { 'programName':program
+                   .title|replace({" ": "-"}) }) }}">
+                Show all program seasons.
+            </a>
+        </div>
+    </div>
+
+
+    <a href="{{ path('app_index') }}">
+        Retour à l'accueil
+    </a>
+{% endblock %}
