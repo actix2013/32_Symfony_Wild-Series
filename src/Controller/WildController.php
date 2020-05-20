@@ -268,11 +268,9 @@ class WildController extends AbstractController
     public function showNoMatch(string $page = "empty"): Response
     {
 
-        try {
-            throw $this->createNotFoundException('404 - Bad URL : ' . $page . "in [Function : ".  __FUNCTION__ ."]");
-        } catch (\Exception $e) {
-            return $this->render('_404.html.twig', ['msg' => $e->getMessage()]);
-        }
+        $message = "Demande intercepté par une route de recupération pour [show] , la demande ne respecte pas les critere de  filtres. ";
+        $function = __FUNCTION__;
+        return $this->goTo404($message, $function, false);
 
     }
 
