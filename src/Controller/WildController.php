@@ -22,6 +22,9 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class WildController extends AbstractController
 {
+    /**
+     * utiliser pour les card bootstap qui sont numerotées.
+     */
     CONST  NUMBERS = array(
             1 => "One",
             2 => "Two",
@@ -63,6 +66,24 @@ class WildController extends AbstractController
         //return new Response('<html><body>Wild Series Index</body></html>');
     }
 
+
+    /**
+     * @Route("/episode/{id<[0-9]{1,5}>}", name="show_episode")
+     */
+    public function showEpisode(Episode $episode): Response
+    {
+        if (!$episode) {
+            $message = "Aucun episode ne corespond a votre demande.";
+            $function = __FUNCTION__;
+            return $this->goTo404($message, $function, true);
+        }
+        $season = $episode->getSeason();
+        $program = $season->getProgram();
+
+        //var_dump($program);
+        return $this->render('wild/episode.html.twig', ['episode' => $episode,"season" => $season, "program" =>$program]);
+
+    }
 
     /**
      * @Route("/show/{slug<^[a-zA-Z0-9.-]*$>}", name="show")
