@@ -22,6 +22,29 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class WildController extends AbstractController
 {
+    CONST  NUMBERS = array(
+            1 => "One",
+            2 => "Two",
+            3 => "Three",
+            4 => "four",
+            5 => "five",
+            6 => "six",
+            7 => "seven",
+            8 => "eight",
+            9 => "nine",
+            10 => "ten",
+            11 => "eleven",
+            12 => "twelve",
+            13 => "thirteen",
+            14 => "fourteen",
+            15 => "fifteen",
+            16 => "sixteen",
+            17 => "seventeen",
+            18 => "eighteen",
+            19 => "nineteen"
+        );
+
+
     /**
      * @Route("/", name="index")
      * @return \Symfony\Component\HttpFoundation\Response
@@ -163,31 +186,11 @@ class WildController extends AbstractController
         $seasons = $program->getSeasons();
 
         $complexSeasons = [];
-        $numbers = array(
-            1 => "One",
-            2 => "Two",
-            3 => "Three",
-            4 => "four",
-            5 => "five",
-            6 => "six",
-            7 => "seven",
-            8 => "eight",
-            9 => "nine",
-            10 => "ten",
-            11 => "eleven",
-            12 => "twelve",
-            13 => "thirteen",
-            14 => "fourteen",
-            15 => "fifteen",
-            16 => "sixteen",
-            17 => "seventeen",
-            18 => "eighteen",
-            19 => "nineteen"
-        );
+
         foreach ($seasons as $season) {
             $complexSeasons[] = [
             "season" =>$season,
-            "stringNumber" =>ucfirst($numbers[$season->getNumber()])
+            "stringNumber" =>ucfirst(SELF::NUMBERS[$season->getNumber()])
             ];
         }
 
@@ -227,31 +230,10 @@ class WildController extends AbstractController
         $complexEpisodes = [];
         $programNameLink = $program->getTitleUrlLinkFormated() ; // get the program name formated for isered link twig
 
-        $numbers = array(
-            1 => "One",
-            2 => "Two",
-            3 => "Three",
-            4 => "four",
-            5 => "five",
-            6 => "six",
-            7 => "seven",
-            8 => "eight",
-            9 => "nine",
-            10 => "ten",
-            11 => "eleven",
-            12 => "twelve",
-            13 => "thirteen",
-            14 => "fourteen",
-            15 => "fifteen",
-            16 => "sixteen",
-            17 => "seventeen",
-            18 => "eighteen",
-            19 => "nineteen"
-        );
         foreach ($episodes as $episode) {
             $complexEpisodes[] = [
                 "episode" => $episode,
-                "stringNumber" => ucfirst($numbers[$episode->getNumber()])
+                "stringNumber" => ucfirst(SELF::NUMBERS[$episode->getNumber()])
             ];
         }
 
