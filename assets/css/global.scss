@@ -4,6 +4,10 @@
 //$primary: darken(#428bca, 20%);
 $primary: lighten(slategray,20%);
 $secondary: lighten($primary,20%);
+$danger: darken(red,5%);
+$dark: black;
+
+
 
 // the ~ allows you to reference things in node_modules
 @import "~bootstrap/scss/bootstrap";

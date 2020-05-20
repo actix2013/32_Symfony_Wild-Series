@@ -3,16 +3,29 @@
 {% block title %}All programs{% endblock %}
 
 {% block body %}
-    <h1>Toutes les séries de la table program : </h1>
-    {% for program in programs %}
-        <div>
-            <h2>{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
-            <p>{{ program.summary }}</p>
-        </div>
-    {% else %}
-        Aucune série trouvée.
-    {% endfor %}
-    <a href="{{ path('app_index') }}">
-        Retour à l'accueil
-    </a>
+    <h1 class="ml-xl-5">Toutes les séries de la table program : </h1>
+    <div class="container pl-5 mb-lg-5">
+        <ul>
+            {% for program in programs %}
+                <li class="mb-5">
+                    <div>
+                        <h2>{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
+                        <p>{{ program.summary }}</p>
+                        <a class="h4 text-decoration-none text-white"
+                           href="{{ path('wild_program', { 'programName':program
+                               .title|replace
+                                   ({" ": "-"}) }) }}">
+                            Cliquer ici pour afficher les saisons de ce programme
+                        </a>
+                        <hr>
+                    </div>
+                </li>
+            {% else %}
+                Aucune série trouvée.
+            {% endfor %}
+        </ul>
+        <a class="h4 text-black-50" href="{{ path('app_index') }}">
+            Retour à l'accueil
+        </a>
+    </div>
 {% endblock %}
