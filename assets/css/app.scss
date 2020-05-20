@@ -1,3 +1,76 @@
+root {
+  font-family: 'Bebas Neue', cursive;
+}
+
 body {
-    background-color: whitesmoke;
+  background-color: whitesmoke;
+  font-family: 'Bebas Neue', cursive;
+  color: black;
+}
+
+
+
+.myProgramCardCard {
+  color: white;
+  /* container card acordion */
+  div{
+
+    /* container card complete */
+    div{
+      border-radius: 10px !important;
+
+      /* container card header*/
+      div:nth-child(1){
+        background-position: right;
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: auto;
+        text-align: center;
+        background-color: white;
+        border-radius: 8px 8px 0px 0px !important;
+        h3{
+          button {
+            color: black;
+            font-weight: bold;
+            text-shadow: 2px 3px 2px rgba(255, 255, 255, 0.2);
+            font-size: 2rem;
+            border: none;
+          }
+
+          button:hover {
+            font-weight: bold;
+            text-shadow: 3px 4px 3px rgba(255, 255, 255, 0.4);
+            font-size: 2.07rem;
+            border: none;
+            text-decoration: none;
+            background-color: darken(white, 2%);
+            border-radius: 10px;
+          }
+        }
+      }
+
+      .collapse{
+        text-align: left;
+        border-radius: 0px;
+      }
+
+      /* title afficher les options */
+      a {
+        font-size: 2.05rem;
+        color: white;
+        text-decoration: none;
+
+      }
+
+      a:hover {
+        color: white;
+        text-decoration: none;
+        font-size: 2.08rem;
+
+      }
+
+
+    }
+  }
+
 }

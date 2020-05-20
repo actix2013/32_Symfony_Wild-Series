@@ -3,38 +3,44 @@
 {% block title %}Program details {% endblock %}
 
 {% block body %}
-    <div class="container-fluid ">
+    <div class="container">
         <h1>Liste des saisons pour le programme {{ program.title }} : </h1>
         <h2> {{ program.title }} - Catégorie : {{ program.category.name }} </h2>
         <p>{{ program.summary }}</p>
-        <div class="container">
+        <div class="myProgramCardCard">
+            <div id="accordion">
             {% for complex in  complexSeasons %}
-                <div id="accordion">
-                    <div class="card border border-dark bg-danger mt-5">
-                        <div class="card-header text-white bg-dark" id="heading{{ complex.stringNumber }}">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{ complex.stringNumber }}"
+                    <div class="card border border-white bg-danger mt-5">
+                        <div class="card-header" id="heading{{ complex.stringNumber }}"
+                             style="background-image: url('{{ program.poster }}');">
+                            <h3 class="mb-0 title3">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{ complex
+                                .stringNumber }}"
                                         aria-expanded="true"
                                         aria-controls="collapse{{ complex.stringNumber }}">
                                     {{ program.title }} saison {{ complex.season.number }} - Catégorie
                                     : {{ program.category.name }}
                                     ( {{ complex.season.year }} )
                                 </button>
-                            </h5>
+                            </h3>
                         </div>
 
                         <div id="collapse{{ complex.stringNumber}}" class="collapse show"
                              aria-labelledby="heading{{ complex.stringNumber }}"
                              data-parent="#accordion">
-                            <div class="card-body">
+                            <div class="card-body bg-danger">
                                 {{ complex.season.description }}
                             </div>
                         </div>
+                        <a class ="ml-3 h3" href="{{ path('app_index') }}">
+                            Afficher les episodes
+                        </a>
                     </div>
-                </div>
+
             {% else %}
                 Aucune saison trouvée.
             {% endfor %}
+            </div>
             <a href="{{ path('app_index') }}">
                 Retour à l'accueil
             </a>
