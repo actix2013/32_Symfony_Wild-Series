@@ -4,10 +4,13 @@
 namespace App\Controller;
 
 use App\Entity\Program;
+
+use App\Entity\Season;
+use App\Entity\Episode;
+use App\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Entity\Category;
 
 
 
@@ -190,11 +193,75 @@ class WildController extends AbstractController
         return $this->render('wild/program.html.twig', [
             'program' => $program,
             "complexSeasons" => $complexSeasons,
-
         ]);
 
     }
 
+
+    /**
+     * @Route("/season/{id<[0-9]{1,5}>}", name="season")
+     */
+    public function showBySeason(int $id = 0 ){
+
+        if (!$id || $id === 0) {
+            $message = "Impossible d'afficher la saison demandée , demande vide.";
+            $function = __FUNCTION__;
+            return $this->goTo404($message, $function, true);
+        }
+
+        $season = $this->getDoctrine()
+            ->getRepository(Season::class)
+            ->findOneBy([
+                'id' => $id
+            ]);
+
+        if (!$season) {
+            $message = "Impossible d'afficher la saison demandée. La référence [ $id ] n'a pas été trouver dans la base.";
+            $function = __FUNCTION__;
+            return $this->goTo404($message, $function, false);
+        }
+        $episodes = $season->getEpisodes();
+        $program = $season->getProgram();
+
+        $complexEpisodes = [];
+        $programNameLink = $program->getTitleUrlLinkFormated() ; // get the program name formated for isered link twig
+
+        $numbers = array(
+            1 => "One",
+            2 => "Two",
+            3 => "Three",
+            4 => "four",
+            5 => "five",
+            6 => "six",
+            7 => "seven",
+            8 => "eight",
+            9 => "nine",
+            10 => "ten",
+            11 => "eleven",
+            12 => "twelve",
+            13 => "thirteen",
+            14 => "fourteen",
+            15 => "fifteen",
+            16 => "sixteen",
+            17 => "seventeen",
+            18 => "eighteen",
+            19 => "nineteen"
+        );
+        foreach ($episodes as $episode) {
+            $complexEpisodes[] = [
+                "episode" => $episode,
+                "stringNumber" => ucfirst($numbers[$episode->getNumber()])
+            ];
+        }
+
+        return $this->render('wild/season.html.twig', [
+            'program' => $program,
+            "complexEpisodes" => $complexEpisodes,
+            "season" => $season,
+            "programNameLink" => $programNameLink
+        ]);
+
+    }
 
     /**
      * default route if no match

@@ -60,6 +60,12 @@ class Program
         return $this->title;
     }
 
+    public function getTitleUrlLinkFormated(): ?string
+    {
+        return str_replace(" ","-", $this->title);
+    }
+
+
     public function setTitle(?string $title): self
     {
         $this->title = $title;
