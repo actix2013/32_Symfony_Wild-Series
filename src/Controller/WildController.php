@@ -13,7 +13,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 
-
 /**
  * Class WildController !
  *
@@ -267,11 +266,9 @@ class WildController extends AbstractController
      */
     public function showNoMatch(string $page = "empty"): Response
     {
-
         $message = "Demande intercepté par une route de recupération pour [show] , la demande ne respecte pas les critere de  filtres. ";
         $function = __FUNCTION__;
         return $this->goTo404($message, $function, false);
-
     }
 
 
