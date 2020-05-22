@@ -34,18 +34,17 @@ public function add(Request $request): Response
         $pageTitle = "Add a category";
         $form = $this->createForm(CategoryType::class);
         $form->handleRequest($request);
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData(); // $data contains $_POST data
-            if ($data["searchField"] === "*") $data["searchField"] = "";
-            $doctrine = $this->getDoctrine();
-            $programsRepository = $doctrine->getRepository(Program::class);
-            $query = $programsRepository->createQueryBuilder('p')
-                ->where("p.title LIKE :Robot") //
-                ->setParameter(':Robot', "%" . $data["searchField"] . "%")
-                ->orderBy('p.title', 'ASC')
-                ->getQuery();
-            $programs = $query->setMaxResults(10)->getResult();
-            $pageTitle = "Resultat de la recherche :";
+            $name = $data->getName();
+            $category = new Category();
+            $category->setName($name);
+
+            // persist object
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($category);
+            $em->flush();
+            return $this->redirectToRoute('category_index');
             // TODO : Faire une recherche dans la BDD avec les infos de $data…
         } else {
 
@@ -64,6 +63,32 @@ public function add(Request $request): Response
             'form' => $form->createView(), "pageTitle" => $pageTitle
         ]);
 
+    }
+
+    /**
+     * @param $id
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/delete/{category<[0-9]{1,3}>}" , name="delete")
+     */
+    public function delete(Category $category)
+    {
+
+        $pageTitle = "Add a category";
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($category);
+        $em->flush();
+        return $this->redirectToRoute('category_index');
+
+
+
+
+        /*if (!$programs) {
+           throw $this->createNotFoundException("No program found in program's table");
+        }
+        return $this->render('category/add.html.twig', ['website' => 'Wild Séries', "programs" => $programs,
+            'form' => $form->createView(), "pageTitle" => $pageTitle
+        ]);*/
     }
 
 

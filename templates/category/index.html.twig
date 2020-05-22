@@ -5,9 +5,10 @@
 {% block body %}
 
     <div class="container pl-5 mb-lg-5">
-        <h1 class="ml-xl-5 mt-5 mb-lg-5">
+        <h1 class="pl-xl-5 mt-5 mb-lg-1">
             {{ pageTitle }}
         </h1>
+        <hr>
         <div class="d-flex flex-row align-items-center justify-content-end">
             <a class="h6 text-dark bg-white rounded p-2 border border-dark"
                href="{{ path('category_add') }}">
@@ -20,18 +21,18 @@
         <ul class="mt-1git  list-unstyled  ">
             {% for category in categorys %}
                 <li class="mb-1 bg-danger pl-5 pt-1 rounded border border-white">
-                    <div class="d-flex flex-row align-items-center justify-content-around">
-                        <div class="p-2">
+                    <div class="d-flex flex-row align-items-center justify-content-end">
+                        <div class="mr-auto p-2">
                             <h2 class="mb-2">{{ loop.index }} : {{ category.name }}</h2>
                         </div>
-                        <div class="p-2"><a class="h6 text-dark mr-xl-5 bg-white rounded p-2 border border-dark"
-                                            href="{{ path
-                                                ('app_index') }}">
+                        <div class="p-2"><a class="h6 text-dark mr-xl-5 bg-white rounded p-2 border
+                        border-dark"
+                                            href="{{ path('app_index') }}">
                                 Update
                             </a>
                         </div>
                         <div class="p-2"><a class="h6 text-dark mr-xl-5 bg-white rounded p-2 border border-dark"
-                                            href="{{ path('app_index') }}">
+                                            href="{{ path('category_delete', { 'category': category.id }) }}">
                                 Delete
                             </a>
                         </div>

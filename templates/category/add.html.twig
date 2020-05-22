@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Add category{% endblock %}
+{% block title %}Add category {% endblock %}
 
 {% block body %}
     <div class="container pl-5 mb-lg-5">
@@ -11,7 +11,7 @@
             {{ form_row(form.name ) }}
             {{ form_end(form) }}
         </div>
-        <a class="h4 text-black-50 m-xl-5" href="{{ path('category_index') }}">
+        <a class="h6 text-dark mr-xl-5 " href="{{ path('category_index') }}">
             Back to category page
         </a>
     </div>
