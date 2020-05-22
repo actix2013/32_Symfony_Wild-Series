@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add category{% endblock %}
+
+{% block body %}
+    <div class="container pl-5 mb-lg-5">
+        <h1 class="ml-xl-5 mt-5 mb-lg-5">{{ pageTitle }} </h1>
+        <div class="col-11 m-5 p-5 border border-danger rounded">
+            {% form_theme form 'bootstrap_4_layout.html.twig' %}
+            {{ form_start(form) }}
+            {{ form_row(form.name ) }}
+            {{ form_end(form) }}
+        </div>
+        <a class="h4 text-black-50 m-xl-5" href="{{ path('category_index') }}">
+            Back to category page
+        </a>
+    </div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}All programs{% endblock %}
+
+{% block body %}
+
+    <div class="container pl-5 mb-lg-5">
+        <h1 class="ml-xl-5 mt-5 mb-lg-5">
+            {{ pageTitle }}
+        </h1>
+        <div class="d-flex flex-row align-items-center justify-content-end">
+            <a class="h6 text-dark bg-white rounded p-2 border border-dark"
+               href="{{ path('category_add') }}">
+                Add a category
+            </a>
+
+        </div>
+
+
+        <ul class="mt-1git  list-unstyled  ">
+            {% for category in categorys %}
+                <li class="mb-1 bg-danger pl-5 pt-1 rounded border border-white">
+                    <div class="d-flex flex-row align-items-center justify-content-around">
+                        <div class="p-2">
+                            <h2 class="mb-2">{{ loop.index }} : {{ category.name }}</h2>
+                        </div>
+                        <div class="p-2"><a class="h6 text-dark mr-xl-5 bg-white rounded p-2 border border-dark"
+                                            href="{{ path
+                                                ('app_index') }}">
+                                Update
+                            </a>
+                        </div>
+                        <div class="p-2"><a class="h6 text-dark mr-xl-5 bg-white rounded p-2 border border-dark"
+                                            href="{{ path('app_index') }}">
+                                Delete
+                            </a>
+                        </div>
+                    </div>
+
+                </li>
+            {% else %}
+                <li class="mb-5 ml-5">
+                    <div>
+                        <h2> Aucune cathégorie trouvée.</h2>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <a class="h4 text-dark" href="{{ path('app_index') }}">
+            Back to home page
+        </a>
+    </div>
+{% endblock %}
