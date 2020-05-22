@@ -4,15 +4,14 @@
 namespace App\Controller;
 
 use App\Entity\Program;
-
 use App\Entity\Season;
 use App\Entity\Episode;
 use App\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
-
+use Symfony\Component\HttpFoundation\Request;
+use App\Form\ProgramSearchType;
 
 /**
  * Class WildController !
@@ -52,18 +51,42 @@ class WildController extends AbstractController
      * @Route("/", name="index")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function index(): Response
+    public function index(Request $request): Response
     {
 
-        $doctrine = $this->getDoctrine();
-        $repository = $doctrine->getRepository(Program::class);
-        $programs = $repository->findAll();
+        $pageTitle = "Toutes les séries de la table program :";
+        $form = $this->createForm(ProgramSearchType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted()) {
+            $data = $form->getData(); // $data contains $_POST data
+            if($data["searchField"] === "*") $data["searchField"] = "";
+            $doctrine = $this->getDoctrine();
+            $programsRepository = $doctrine->getRepository(Program::class);
+            $query = $programsRepository->createQueryBuilder('p')
+                ->where("p.title LIKE :Robot") //
+                ->setParameter(':Robot', "%". $data["searchField"]."%")
+                ->orderBy('p.title', 'ASC')
+                ->getQuery();
+            $programs = $query->setMaxResults(10)->getResult();
+            $pageTitle = "Resultat de la recherche :";
+            // TODO : Faire une recherche dans la BDD avec les infos de $data…
+        } else {
 
-        if (!$programs) {
-           throw $this->createNotFoundException("No program found in program's table");
+            $doctrine = $this->getDoctrine();
+            $repository = $doctrine->getRepository(Program::class);
+            $programs = $repository->findAll();
+
+
         }
-       return $this->render('wild/index.html.twig', ['website' => 'Wild Séries', "programs" => $programs]);
-        //return new Response('<html><body>Wild Series Index</body></html>');
+
+
+        /*if (!$programs) {
+           throw $this->createNotFoundException("No program found in program's table");
+        }*/
+       return $this->render('wild/index.html.twig', ['website' => 'Wild Séries', "programs" => $programs,
+           'form' => $form->createView() , "pageTitle" => $pageTitle
+       ]);
+
     }
 
 
@@ -267,11 +290,9 @@ class WildController extends AbstractController
      */
     public function showNoMatch(string $page = "empty"): Response
     {
-
         $message = "Demande intercepté par une route de recupération pour [show] , la demande ne respecte pas les critere de  filtres. ";
         $function = __FUNCTION__;
         return $this->goTo404($message, $function, false);
-
     }
 
 
