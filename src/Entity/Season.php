@@ -133,4 +133,12 @@ class Season
 
         return $this;
     }
+
+
+    public function getSeasonAndProgram() :string {
+        $number = $this->getNumber();
+        $programName = $this->getProgram()->getTitle();
+        return $programName . " [Season " . $number . "]";
+
+}
 }

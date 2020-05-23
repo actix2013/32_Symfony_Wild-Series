@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Episode index{% endblock %}
+
+{% block body %}
+    <div class="{{ containerFormTitle }}">
+        <h1 class="col-6 ml-1 p-2">Episode index : </h1>
+        <a class="{{ btnDelete }} col-6 mt-2" href="{{ path('episode_new') }}">Create new</a>
+    </div>
+    <table class="table {{ containerTable }}">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Number</th>
+                <th>Synopsis</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% set bgBascule = false %}
+        {% for episode in episodes %}
+            {% if bgBascule == false %}
+                {% set bgColor = "bg-secondary" %}
+                {% set bgBascule = true %}
+            {% else %}
+                {% set bgColor = "bg-primary " %}
+                {% set bgBascule = false %}
+            {% endif %}
+            <tr class="{{ bgColor }}">
+                <td>{{ episode.id }}</td>
+                <td>{{ episode.title }}</td>
+                <td>{{ episode.number }}</td>
+                <td>{{ episode.synopsis }}</td>
+                <td>
+                    <div class="d-flex flex-column">
+                        <a class="h6 text-dark bg-white rounded p-2 border border-dark" href="{{ path
+                            ('episode_show', {'id': episode.id}) }}">show</a>
+                        <a class="h6 text-dark bg-white rounded p-2 border border-dark" href="{{ path
+                            ('episode_edit', {'id': episode.id}) }}">edit</a>
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('episode_new') }}">Create new</a>
+{% endblock %}

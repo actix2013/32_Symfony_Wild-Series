@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Episode{% endblock %}
+
+{% block body %}
+    <div class="{{ containerFormTitle }}">
+        <h1 class="p-2 mr-1 text-white">Edit episode : </h1>
+    </div>
+    <div class="{{ containerForm }}">
+        {% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+        {{ include('episode/_form.html.twig', {'button_label': 'Update'}) }}
+        {{ include('episode/_delete_form.html.twig') }}
+    </div>
+    <div class="{{ containerEnd }}">
+        <a class="{{ btnBack }}" href="{{ path('episode_index') }}">back to
+            list</a>
+    </div>
+{% endblock %}

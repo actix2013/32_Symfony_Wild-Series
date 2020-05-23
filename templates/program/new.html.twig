@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Program{% endblock %}
+
+{% block body %}
+
+    <div class="{{ containerFormTitle }}">
+        <h1 class="p-2 mr-1 text-white">Create new Program: </h1>
+    </div>
+    <div class="{{ containerForm }}">
+        {% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+        {{ include('program/_form.html.twig') }}
+    </div>
+    <div class="{{ containerEnd }}">
+        <a class="{{ btnBack }}" href="{{ path('program_index') }}">back to
+            list</a>
+    </div>
+
+{% endblock %}
