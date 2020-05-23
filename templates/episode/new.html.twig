@@ -3,9 +3,17 @@
 {% block title %}New Episode{% endblock %}
 
 {% block body %}
-    <h1>Create new Episode</h1>
 
-    {{ include('episode/_form.html.twig') }}
+    <div class="{{ containerFormTitle }}">
+        <h1 class="p-2 mr-1 text-white">Create new Episode: </h1>
+    </div>
+    <div class="{{ containerForm }}">
+        {% form_theme form 'bootstrap_4_layout.html.twig' %}
 
-    <a href="{{ path('episode_index') }}">back to list</a>
+        {{ include('episode/_form.html.twig') }}
+    </div>
+    <div class="{{ containerEnd }}">
+        <a class="{{ btnBack }}" href="{{ path('episode_index') }}">back to
+            list</a>
+    </div>
 {% endblock %}
