@@ -10,7 +10,7 @@
         </div>
         <table class="table {{ containerTable }}">
             <thead>
-            <tr class="bg-white">
+            <tr>
                 <th>Id</th>
                 <th>Title</th>
                 <th>Summary</th>
@@ -28,7 +28,7 @@
                     {% set bgColor = "bg-primary " %}
                     {% set bgBascule = false %}
                 {% endif %}
-                <tr class="border-bottom border-dark {{ bgColor }}">
+                <tr class="{{ bgColor }}">
                     <td>{{ program.id }}</td>
                     <td class="border-left border-dark">{{ program.title }}</td>
                     <td class="border-left border-dark">{{ program.summary }}</td>

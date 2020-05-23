@@ -3,11 +3,16 @@
 {% block title %}Edit Season{% endblock %}
 
 {% block body %}
-    <h1>Edit Season</h1>
+    <div class="{{ containerFormTitle }}">
+        <h1 class="p-2 mr-1 text-white">Edit Season : </h1>
+    </div>
+    <div class="{{ containerForm }}">
+        {% form_theme form 'bootstrap_4_layout.html.twig' %}
+        {{ include('season/_form.html.twig', {'button_label': 'Update'}) }}
+        {{ include('season/_delete_form.html.twig') }}
+    </div>
+    <div class="{{ containerEnd }}">
+        <a class="{{ btnBack }}" href="{{ path('season_index') }}">back to list</a>
+    </div>
 
-    {{ include('season/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('season_index') }}">back to list</a>
-
-    {{ include('season/_delete_form.html.twig') }}
 {% endblock %}

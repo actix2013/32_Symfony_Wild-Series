@@ -3,37 +3,56 @@
 {% block title %}Season index{% endblock %}
 
 {% block body %}
-    <h1>Season index</h1>
-
-    <table class="table">
+<div class="container d-flex flex-column">
+    <div class="{{ containerFormTitle }}">
+        <h1 class="col-7 ml-1 p-2">Season index : </h1>
+        <a class="{{ btnDelete }} col-5 mt-2" href="{{ path('season_new') }}">Create new</a>
+    </div>
+    <table class="table {{ containerTable }}">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Number</th>
                 <th>Year</th>
                 <th>Description</th>
+                <th>Program</th> <!-- user added -->
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
+        {% set bgBascule = false %}
         {% for season in seasons %}
-            <tr>
+
+            {% if bgBascule == false %}
+                {% set bgColor = "bg-secondary" %}
+                {% set bgBascule = true %}
+            {% else %}
+                {% set bgColor = "bg-primary " %}
+                {% set bgBascule = false %}
+            {% endif %}
+            <tr class="{{ bgColor }}">
                 <td>{{ season.id }}</td>
                 <td>{{ season.number }}</td>
                 <td>{{ season.year }}</td>
                 <td>{{ season.description }}</td>
+                <td>{{ season.program.title }}</td> <!-- user added -->
                 <td>
-                    <a href="{{ path('season_show', {'id': season.id}) }}">show</a>
-                    <a href="{{ path('season_edit', {'id': season.id}) }}">edit</a>
+                    <div class="d-flex flex-column">
+                        <a class="h6 text-dark bg-white rounded p-2 border border-dark" href="{{ path
+                            ('season_show', {'id': season.id}) }}">show</a>
+                        <a class="h6 text-dark bg-white rounded p-2 border border-dark" href="{{ path
+                            ('season_edit', {'id': season.id}) }}">edit</a>
+                    </div>
                 </td>
             </tr>
         {% else %}
-            <tr>
+            <tr class="{{ bgColor }}">
                 <td colspan="5">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('season_new') }}">Create new</a>
+
+</div>
 {% endblock %}

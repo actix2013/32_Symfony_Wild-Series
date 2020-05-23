@@ -205,8 +205,15 @@ body {
 }
 
 .myTable{
+
   table, th, td {
     border: 1px solid black;
+  }
+
+  thead{
+    tr{
+      background-color: white;
+    }
   }
 }
 
