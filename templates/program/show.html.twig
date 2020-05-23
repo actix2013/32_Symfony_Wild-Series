@@ -3,9 +3,21 @@
 {% block title %}Program{% endblock %}
 
 {% block body %}
-    <h1>Program</h1>
+    <div class="{{ containerFormTitle }}">
+        <h1 class="col-6 p-2 mr-1 text-white">Show Program : </h1>
+        <div class="col-3 mt-1">
+            <a class="{{ btnDelete }}" href="{{ path('program_edit', {'id': program.id}) }}">edit</a>
+        </div>
+        <div class="col-3 mt-1">
+            {{ include('program/_delete_form.html.twig') }}
+        </div>
 
-    <table class="table">
+
+    </div>
+
+
+
+    <table class="table {{ containerTable }} bg-secondary">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -20,15 +32,30 @@
                 <td>{{ program.summary }}</td>
             </tr>
             <tr>
-                <th>Poster</th>
-                <td>{{ program.poster }}</td>
+                <th>poster visual</th>
+                <td>
+                        <img alt="{{ program.poster }}" class="col-2 rounded border border-white"
+                             src="{{ program.poster }}" width="100"/>
+                </td>
+
+            </tr>
+            <tr>
+                <th>Poster link</th>
+                <td>
+                    <p>
+                    <span class="myTdLink">{{ program.poster }}</span>
+                    </p>
+                </td>
             </tr>
         </tbody>
+
     </table>
 
-    <a href="{{ path('program_index') }}">back to list</a>
+    <div class="{{ containerEnd }}">
 
-    <a href="{{ path('program_edit', {'id': program.id}) }}">edit</a>
 
-    {{ include('program/_delete_form.html.twig') }}
+
+    <a class="{{ btnDelete }}" href="{{ path('program_index') }}">back to list</a>
+    </div>
+
 {% endblock %}
