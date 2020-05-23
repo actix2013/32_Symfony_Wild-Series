@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Program{% endblock %}
+
+{% block body %}
+    <div class="{{ containerFormTitle }}">
+        <h1 class="col-6 p-2 mr-1 text-white">Show Program : </h1>
+        <div class="col-3 mt-1">
+            <a class="{{ btnDelete }}" href="{{ path('program_edit', {'id': program.id}) }}">edit</a>
+        </div>
+        <div class="col-3 mt-1">
+            {{ include('program/_delete_form.html.twig') }}
+        </div>
+    </div>
+
+
+
+    <table class="table {{ containerTable }} bg-secondary">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ program.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ program.title }}</td>
+            </tr>
+            <tr>
+                <th>Summary</th>
+                <td>{{ program.summary }}</td>
+            </tr>
+            <tr>
+                <th>poster visual</th>
+                <td>
+                        <img alt="{{ program.poster }}" class="col-2 rounded border border-white"
+                             src="{{ program.poster }}" width="100"/>
+                </td>
+            </tr>
+            <tr>
+                <th>Poster link</th>
+                <td>
+                    <p>
+                    <span class="myTdLink">{{ program.poster }}</span>
+                    </p>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <div class="{{ containerEnd }}">
+    <a class="{{ btnDelete }}" href="{{ path('program_index') }}">back to list</a>
+    </div>
+
+{% endblock %}

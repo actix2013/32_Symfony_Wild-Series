@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Episode{% endblock %}
+
+{% block body %}
+    <h1>Episode</h1>
+    <div class="{{ containerFormTitle }}">
+        <h1 class="col-6 p-2 mr-1 text-white">Show Episode: </h1>
+        <div class="col-3 mt-1">
+            <a class="{{ btnDelete }}" href="{{ path('episode_edit', {'id': episode.id}) }}">edit</a>
+        </div>
+        <div class="col-3 mt-1">
+            {{ include('episode/_delete_form.html.twig') }}
+        </div>
+    </div>
+    <table class="table {{ containerTable }} bg-secondary">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ episode.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ episode.title }}</td>
+            </tr>
+            <tr>
+                <th>Number</th>
+                <td>{{ episode.number }}</td>
+            </tr>
+            <tr>
+                <th>Synopsis</th>
+                <td>{{ episode.synopsis }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="{{ containerEnd }}">
+        <a class="{{ btnDelete }}" href="{{ path('episode_index') }}">back to list</a>
+    </div>
+{% endblock %}

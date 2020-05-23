@@ -196,9 +196,40 @@ body {
   background-color: black;
 }
 
+.myEpisode{
+  border-color: red;
+  background-color: white;
+  color:red;
+  border-radius: 10px;
+  padding-bottom:20px ;
+}
+
+.myTable{
+
+  table, th, td {
+    border: 1px solid black;
+  }
+
+  thead{
+    tr{
+      background-color: white;
+    }
+  }
+}
+
+.myBtnDelete{
+  min-width: 10vw;
+  margin-top: 10px;
+}
+
+.myTdLink{
+  word-break: break-all;
+}
 
 @media all and (max-width: 980px) {
   .myButton {
     width: 100%;
   }
 }
+
+
