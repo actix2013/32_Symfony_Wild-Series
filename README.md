@@ -52,7 +52,7 @@ __Quest 12:__
 
 - [x] _**Affiche tous les épisodes / Modifie plusieurs épisodes (au moins 2) / Efface plusieurs épisodes (au moins 2)**_
 
-[Video link SHOW MODIFY DELETE SEASON](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST12-06-SHOW-DELETE-MODIFY-EPISODE.mp4)
+[Video link SHOW MODIFY DELETE EPISODE](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST12-06-SHOW-DELETE-MODIFY-EPISODE.mp4)
 
 ***
 ***
