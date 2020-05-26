@@ -4,8 +4,8 @@
 
 {% block body %}
 
-    <div class="container pl-5 mb-lg-5">
-        <div class="col-11 m-5 p-5 border border-danger rounded">
+    <div class="container pl-5 mb-lg-5 ">
+        <div class="col-11 m-5 p-5 border border-danger rounded myBlockTextBase">
             {% form_theme form 'bootstrap_4_layout.html.twig' %}
             {{ form_start(form) }}
             {{ form_row(form.searchField) }}
@@ -14,10 +14,10 @@
         </div>
         <h1 class="ml-xl-5 mt-5 mb-lg-5">{{ pageTitle }} </h1>
 
-        <ul>
+        <ul class="list-unstyled">
             {% for program in programs %}
                 <li class="mb-5">
-                    <div>
+                    <div class="myBlockTextBaseBgWhite p-3">
                         <h2>{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
                         <p>{{ program.summary }}</p>
                         <a class="h4 text-decoration-none text-white"
