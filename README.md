@@ -56,7 +56,14 @@ __Quest 12:__
 
 ***
 ***
+__Quest 13: VALIDATION__ 
 
+- [X] _**Message erruer  maxLength sur le tilte**_
+- [X] _**Message erruer  si un tilte existe deja**_
+- [X] _**Message erruer  si un synopsis vide**_
+- [X] _**[BONUS]Message erruer  plus belle la vie**_
+
+[Video link all  errors  MSG CREATE PROGRAM](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST13-01-Validation.mp4)
 
 
 
