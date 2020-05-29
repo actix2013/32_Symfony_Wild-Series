@@ -7,7 +7,7 @@
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
     </head>
-    <body>
+    <body class="bgImgOne">
         {% set btnDelete = "btn h6 text-dark bg-white rounded p-2 border border-dark myBtnDelete  shadow-lg" %}
         {% set btnUpdate = "btn h6 text-dark bg-white rounded p-2 border border-dark" %}
         {% set containerForm = "container d-flex-column bg-secondary text-dark rounded shadow-lg" %}
@@ -18,9 +18,11 @@
     <header class="container-fluid">
         {% include "_navbar.html.twig" %}
     </header>
+
        <div class="container"> {% block body %}{% endblock %}</div>
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
+
     </body>
 </html>

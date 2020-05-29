@@ -3,13 +3,53 @@ root {
 }
 
 body {
-  background-color: darken(darkgray, 10%);
+background-color: white;
   font-family: 'Bebas Neue', cursive;
-  color: white;
+  color:white;
   h1 {
     font-weight: bolder;
   }
 }
+
+
+.myBgOpacityWhite30 {
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: -1px 1px 10px 10px rgba(255, 255, 255, 0.3)
+}
+
+.opacity-80 {
+  opacity: 80%;
+}
+.myBlockTextBase {
+  padding: 15px;
+  margin-top: 50px;
+  border-radius: 5px;
+  color: white;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.3);
+  box-shadow: -1px 1px 10px 10px rgba(255, 255, 255, 0.3);
+  a{
+    color:white;
+    text-decoration: none;
+    font-size: 1.5rem;
+  }
+}
+
+.myBlockTextBaseBgWhite {
+  @extend .myBlockTextBase;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.8);
+  box-shadow: -1px 1px 10px 10px rgba(255, 255, 255, 0.3);
+
+}
+
+
+.bgImgOne {
+  background-image: url('https://www.telerama.fr/sites/tr_master/files/styles/simplecrop1000/public/our_boys_93_ver_1_0.jpg?itok=PIRfhxQA&sc=7737aa218c46466c023415e23d665d7b');
+  background-repeat:no-repeat;
+  background-size  : cover;
+}
+
 
 
 .myProgramCardCard {
@@ -167,21 +207,22 @@ body {
   /* title afficher les options */
 
 .myButton {
+
     font-family: 'Bebas Neue', cursive;
     color: white !important;
     font-weight: bold;
-    text-shadow: rgb(255, 255, 255) -1px -2px 0.95em;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
     text-align: center;
     font-size: 1.8rem;
     letter-spacing: 0.1cm;
     /*background: -webkit-linear-gradient(top right, red 75px, white 25px, white 5%);*/
-    box-shadow: -1px 1px 1px 1px rgba(255, 255, 255, 0.7);
+    box-shadow: 1px 1px 5px 2px rgba(255, 255, 255, 0.7);
     background-clip: padding-box;
     border-radius: 5px;
     background-color: red;
-    heigt:80%;
-    min-height: 70px;
-    padding: 15px 5px 0px 5px;
+    heigt:60%;
+    min-height: 40px;
+    padding: 5px 5px 0px 5px;
     margin:3px;
   }
 
@@ -192,7 +233,7 @@ body {
   text-align: center;
   /*background: -webkit-linear-gradient(top right, red 75px, white 25px, white 5%);*/
   box-shadow: -1px 1px 3px 1px rgba(255, 255, 255, 0.7);
-  border-radius: 10px;
+  border-radius: 0px;
   background-color: black;
 }
 
