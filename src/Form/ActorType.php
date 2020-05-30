@@ -6,6 +6,7 @@ use App\Entity\Actor;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class ActorType extends AbstractType
 {
@@ -13,8 +14,12 @@ class ActorType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('programs')
-        ;
+            ->add('programs', null, [
+                "choice_label" => "title",
+                "expanded" => true,
+                "multiple" => true
+            ]);
+
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -3,33 +3,48 @@
 {% block title %}Actor index{% endblock %}
 
 {% block body %}
-    <h1>Actor index</h1>
+    <div class="container d-flex flex-column">
+        <div class="{{ containerFormTitle }}">
+            <h1 class="col-6 ml-1 p-2">Actor index : </h1>
+            <a class="{{ btnDelete }} col-6 mt-2" href="{{ path('actor_new') }}">Create new</a>
+        </div>
 
-    <table class="table">
-        <thead>
+
+        <table class="table {{ containerTable }}">
+            <thead>
             <tr>
                 <th>Id</th>
                 <th>Name</th>
                 <th>actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for actor in actors %}
-            <tr>
-                <td>{{ actor.id }}</td>
-                <td>{{ actor.name }}</td>
-                <td>
-                    <a href="{{ path('actor_show', {'id': actor.id}) }}">show</a>
-                    <a href="{{ path('actor_edit', {'id': actor.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% set bgBascule = false %}
+            {% for actor in actors %}
+                {% if bgBascule == false %}
+                    {% set bgColor = "bg-secondary" %}
+                    {% set bgBascule = true %}
+                {% else %}
+                    {% set bgColor = "bg-primary " %}
+                    {% set bgBascule = false %}
+                {% endif %}
+                <tr class="{{ bgColor }}">
+                    <td>{{ actor.id }}</td>
+                    <td>{{ actor.name }}</td>
+                    <td>
+                        <div class="d-flex flex-column">
+                            <a class="{{ btnUpdate }}" href="{{ path('actor_show', {'id': actor.id}) }}">show</a>
+                            <a class="{{ btnUpdate }}" href="{{ path('actor_edit', {'id': actor.id}) }}">edit</a>
+                        </div>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
-    <a href="{{ path('actor_new') }}">Create new</a>
 {% endblock %}

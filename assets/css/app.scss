@@ -227,11 +227,8 @@ background-color: white;
   }
 
 .myButton:hover {
-
-  //color: black !important;
   text-shadow: rgb(255, 255, 255) -1px -2px 0.95em;
   text-align: center;
-  /*background: -webkit-linear-gradient(top right, red 75px, white 25px, white 5%);*/
   box-shadow: -1px 1px 3px 1px rgba(255, 255, 255, 0.7);
   border-radius: 0px;
   background-color: black;
@@ -245,19 +242,31 @@ background-color: white;
   padding-bottom:20px ;
 }
 
-.myTable{
-
+.myTable {
+  border-color: black;
+  border-style: solid;
+  border-width: 3px;
   table, th, td {
-    border: 1px solid black;
+    border: 1px  solid white;
+
   }
 
-  thead{
-    tr{
-      background-color: white;
+  thead {
+    tr {
+      background-color: rgba(255, 2550, 255, 0.85);
+      box-shadow: 2px 0 -2px -2px white;
+      border: 3px solid black;
+    }
+
+
+  }
+
+  tbody {
+    tr {
+      opacity: 0.95;
     }
   }
 }
-
 .myBtnDelete{
   min-width: 10vw;
   margin-top: 10px;

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ActorRepository;
+use App\Repository\ProgramRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -56,11 +57,26 @@ class Actor
      */
     public function getPrograms(): Collection
     {
-        return $this->programs;
+        /** @var \ArrayIterator $iterator */
+        $iterator = $this->programs->getIterator();
+        $iterator->uasort(function (Program $a, Program $b) {
+            return strcmp($a->getTitle() ,$b->getTitle());
+        });
+
+        $values = $this->programs->toArray();
+        asort($values);
+        return new ArrayCollection($values);
+
+
+
+
     }
 
     public function addProgram(Program $program): self
     {
+
+
+
         if (!$this->programs->contains($program)) {
             $this->programs[] = $program;
         }

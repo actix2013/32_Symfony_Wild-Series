@@ -44,6 +44,18 @@
                     </p>
                 </td>
             </tr>
+            <tr>
+            <th>Program Actors</th>
+            <td>
+                <ul class="list-inline">
+                    {% for actor in program.actors %}
+                        <li>{{ actor.name }}</li>
+                    {% else %}
+                    {% endfor %}
+                </ul>
+
+            </td>
+            </tr>
         </tbody>
 
     </table>
