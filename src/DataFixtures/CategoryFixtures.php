@@ -33,9 +33,10 @@ class CategoryFixtures extends \Doctrine\Bundle\FixturesBundle\Fixture
     public function load(ObjectManager $manager)
     {
         foreach (SELF::CATEGORIES as $key => $cathegoryName) {
-            $cathegory = new Category();
-            $cathegory->setName($cathegoryName);
-            $manager->persist($cathegory);
+            $category = new Category();
+            $category->setName($cathegoryName);
+            $manager->persist($category);
+            $this->addReference('categorie_' . $key, $category);
         }
         $manager->flush();
     }
