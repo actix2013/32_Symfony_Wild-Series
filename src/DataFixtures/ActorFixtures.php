@@ -13,7 +13,20 @@ use Faker;
 class ActorFixtures extends \Doctrine\Bundle\FixturesBundle\Fixture implements DependentFixtureInterface
 {
 
-
+    const ACTORS  = [
+        "Andrew LINCOLN" => [
+            "programs" => ["program_0","program_5"]
+        ],
+        "Norman REEDUS" => [
+            "programs" => ["program_0"]
+        ],
+        "Lauren COHAN" => [
+            "programs" => ["program_0"]
+        ],
+        "Danai GUIR" => [
+            "programs" => ["program_0"]
+        ],
+    ];
 
     /**
      * @inheritDoc
@@ -21,7 +34,21 @@ class ActorFixtures extends \Doctrine\Bundle\FixturesBundle\Fixture implements D
     public function load(ObjectManager $manager)
     {
         $k = 0;
-        for ($i = 0; $i < 50; $i++) {
+        foreach (SELF::ACTORS as $name => $progs) {
+            $actor = new Actor();
+            $fonctionName = "setName";
+            $actor->{$fonctionName}($name);
+            $manager->persist($actor);
+            $list = $progs["programs"];
+            foreach ($list as $value) {
+                $value;
+                $actor->addProgram($this->getReference($value));
+            }
+            $this->addReference("actor_" . $k, $actor);
+            $k++;
+        }
+
+        for ($i = 5; $i < 55; $i++) {
             $actor = new Actor();
             $faker = Faker\Factory::create('fr_FR');
             $fonctionName = "setName";
@@ -31,25 +58,11 @@ class ActorFixtures extends \Doctrine\Bundle\FixturesBundle\Fixture implements D
                 $actor->addProgram($this->getReference("program_" . rand(0, ProgramFixtures::NUMBER_PROGRAM)));
             }
             $this->addReference("actor_" . $k, $actor);
-
             $k++;
         }
         $manager->flush();// TODO: Implement load() method.
         /*$i = 0;
-        foreach (SELF::ACTORS as $name => $progs ) {
-            $actor = new Actor();
-            $fonctionName = "setName";
-            $actor->{$fonctionName}($name);
-            $manager->persist($actor);
-            $list = $progs["programs"];
-            foreach ( $list as $value) {
-                $value;
-                $actor->addProgram($this->getReference($value));
-            }
-            $this->addReference("actor_".$i,$actor);
 
-            $i++;
-        }
         $manager->flush();// TODO: Implement load() method.*/
     }
 
