@@ -34,6 +34,8 @@ class ActorFixtures extends \Doctrine\Bundle\FixturesBundle\Fixture implements D
     public function load(ObjectManager $manager)
     {
         $k = 0;
+
+        // creation manuelle des acteurs
         foreach (SELF::ACTORS as $name => $progs) {
             $actor = new Actor();
             $fonctionName = "setName";
@@ -48,6 +50,7 @@ class ActorFixtures extends \Doctrine\Bundle\FixturesBundle\Fixture implements D
             $k++;
         }
 
+        // creation des acteur a l'aide de faker
         for ($i = 5; $i < 55; $i++) {
             $actor = new Actor();
             $faker = Faker\Factory::create('fr_FR');

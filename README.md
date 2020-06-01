@@ -101,15 +101,15 @@ __Quest 15: Entity-Type__
 __Quest 16: Fixtures__ 
 
 - [X] _**Lorsque php bin/console doctrine:fixtures:load est exécuté, il n y a pas de message d'erreur,**_
-   >_@17sec_ 
+   >_@6sec_ 
 - [X] _**Les fixtures génèrent de nombreux acteurs répartis dans toutes les séries existant en base (en plus des acteurs créés à la main)**_
-    >_@17sec_                                                                                                            >
+    >_@44sec to 1 min 25 sec_
 - [X] _**Les fixtures génèrent de nombreuses saisons (à l’aide de Faker) réparties dans toutes les séries existant en base,**_
-   >_@17sec_ 
+    >_@1 min 25 sec to 1 min 50 sec_
 - [X] _**Les fixtures génèrent de nombreux épisodes (à l’aide de Faker) répartis dans les saisons existantes,**_
-    >_@32sec_
+    >_@1 min 50 sec to 3 min 20 sec_
 - [X] _**Les noms des catégories sont définis "à la main" dans la classe App\DataFixtures\CategoryFixtures,**_
-    >_@1 min 05 sec_
+    >_@3 min 20 sec to 3 min 32 sec_
 - [X] _**Les séries sont définies "à la main" dans la classe App\DataFixtures\ProgramFixtures,**_
-    >_@1 min 05 sec_
-[Video link EntityType](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST15-01-EntityType.mp4)
+    >_@3 min 32 sec_
+[Video link EntityType](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST16-01-Fixtures.mp4)
