@@ -56,8 +56,8 @@ class ProgramFixtures extends \Doctrine\Bundle\FixturesBundle\Fixture implements
      */
     public function load(ObjectManager $manager)
     {
-         $slugify =    new Slugify();
 
+        $slugify = new Slugify();
         $i=0;
         foreach (SELF::PROGRAMS as $title => $data) {
             $program = new Program();

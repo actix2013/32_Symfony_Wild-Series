@@ -36,6 +36,10 @@ class Slugify
         }
 
         $res = str_replace(" ", "-", $res);
+        while(preg_match('/--/',$res)) {
+            $test = preg_match("/--/", $res);
+            $res = str_replace("--", "-", $res);
+        }
         $res = mb_strtolower($res);
         return $res;
     }
