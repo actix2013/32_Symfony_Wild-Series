@@ -79,5 +79,19 @@ __Quest 14: Many-To-Many__
 [Video link ManyToMany Actors](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST14-01-ManyToMany.mp4)
 
 
+***
+***
+__Quest 15: Entity-Type__ 
+
+- [X] _**Le formulaire d’ajout d’une série affiche un champ acteur (EntityType).**_
+   >_@17sec_ 
+- [X] _**Ce champ apparaît sous la forme de cases à cocher.**_
+   >_@17sec_ 
+- [X] _**Lorsque l’on ajoute un acteur à une série, celui-ci est bien relié à la série en BDD.**_
+    >_@32sec_
+- [X] _**Les acteurs s’affiche sur la page de la série.**_
+    >_@1 min 05 sec_
+
+[Video link EntityType](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST15-01-EntityType.mp4)
 
 
