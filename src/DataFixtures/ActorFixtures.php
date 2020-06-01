@@ -12,7 +12,7 @@ use Faker;
 
 class ActorFixtures extends \Doctrine\Bundle\FixturesBundle\Fixture implements DependentFixtureInterface
 {
-    CONST NUMBER_PROGRAM = 5;
+
 
 
     /**
@@ -27,8 +27,8 @@ class ActorFixtures extends \Doctrine\Bundle\FixturesBundle\Fixture implements D
             $fonctionName = "setName";
             $actor->{$fonctionName}($faker->name);
             $manager->persist($actor);
-            for ($j = 0; $j < rand(0, SELF::NUMBER_PROGRAM); $j++) {
-                $actor->addProgram($this->getReference("program_" . rand(0, SELF::NUMBER_PROGRAM)));
+            for ($j = 0; $j < rand(0, ProgramFixtures::NUMBER_PROGRAM); $j++) {
+                $actor->addProgram($this->getReference("program_" . rand(0, ProgramFixtures::NUMBER_PROGRAM)));
             }
             $this->addReference("actor_" . $k, $actor);
 

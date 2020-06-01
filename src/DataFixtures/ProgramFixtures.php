@@ -12,6 +12,7 @@ use App\Entity\Program;
 
 class ProgramFixtures extends \Doctrine\Bundle\FixturesBundle\Fixture implements DependentFixtureInterface
 {
+    public const NUMBER_PROGRAM = 5;
 
     const PROGRAMS = [
         'The Walking Dead' => [
