@@ -24,27 +24,39 @@ class WildController extends AbstractController
     /**
      * utiliser pour les card bootstap qui sont numerotées.
      */
-    CONST  NUMBERS = array(
-            1 => "One",
-            2 => "Two",
-            3 => "Three",
-            4 => "four",
-            5 => "five",
-            6 => "six",
-            7 => "seven",
-            8 => "eight",
-            9 => "nine",
-            10 => "ten",
-            11 => "eleven",
-            12 => "twelve",
-            13 => "thirteen",
-            14 => "fourteen",
-            15 => "fifteen",
-            16 => "sixteen",
-            17 => "seventeen",
-            18 => "eighteen",
-            19 => "nineteen"
-        );
+    const  NUMBERS = array(
+        1 => "One",
+        2 => "Two",
+        3 => "Three",
+        4 => "four",
+        5 => "five",
+        6 => "six",
+        7 => "seven",
+        8 => "eight",
+        9 => "nine",
+        10 => "ten",
+        11 => "eleven",
+        12 => "twelve",
+        13 => "thirteen",
+        14 => "fourteen",
+        15 => "fifteen",
+        16 => "sixteen",
+        17 => "seventeen",
+        18 => "eighteen",
+        19 => "nineteen",
+        20 => "twenty",
+        21 => "twenty_one",
+        21 => "twenty_two",
+        22 => "twenty_three",
+        23 => "twenty_four",
+        24 => "twenty_five",
+        25 => "twenty_six",
+        26 => "twenty_seven",
+        27 => "twenty_eight",
+        28 => "twenty_eight",
+        29 => "twenty_nine",
+        30 => "thirty"
+    );
 
 
     /**
@@ -59,12 +71,12 @@ class WildController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted()) {
             $data = $form->getData(); // $data contains $_POST data
-            if($data["searchField"] === "*") $data["searchField"] = "";
+            if ($data["searchField"] === "*") $data["searchField"] = "";
             $doctrine = $this->getDoctrine();
             $programsRepository = $doctrine->getRepository(Program::class);
             $query = $programsRepository->createQueryBuilder('p')
                 ->where("p.title LIKE :Robot") //
-                ->setParameter(':Robot', "%". $data["searchField"]."%")
+                ->setParameter(':Robot', "%" . $data["searchField"] . "%")
                 ->orderBy('p.title', 'ASC')
                 ->getQuery();
             $programs = $query->setMaxResults(10)->getResult();
@@ -83,9 +95,9 @@ class WildController extends AbstractController
         /*if (!$programs) {
            throw $this->createNotFoundException("No program found in program's table");
         }*/
-       return $this->render('wild/index.html.twig', ['website' => 'Wild Séries', "programs" => $programs,
-           'form' => $form->createView() , "pageTitle" => $pageTitle
-       ]);
+        return $this->render('wild/index.html.twig', ['website' => 'Wild Séries', "programs" => $programs,
+            'form' => $form->createView(), "pageTitle" => $pageTitle
+        ]);
 
     }
 
@@ -104,7 +116,7 @@ class WildController extends AbstractController
         $program = $season->getProgram();
 
         //var_dump($program);
-        return $this->render('wild/episode.html.twig', ['episode' => $episode,"season" => $season, "program" =>$program]);
+        return $this->render('wild/episode.html.twig', ['episode' => $episode, "season" => $season, "program" => $program]);
 
     }
 
@@ -115,9 +127,9 @@ class WildController extends AbstractController
     {
 
         if (!$slug) {
-                $message = "Aucune série sélectionnée, veuillez choisir une série !";
-                $function = __FUNCTION__;
-                return $this->goTo404($message,$function,true);
+            $message = "Aucune série sélectionnée, veuillez choisir une série !";
+            $function = __FUNCTION__;
+            return $this->goTo404($message, $function, true);
         }
         $slug = preg_replace(
             '/-/',
@@ -166,7 +178,7 @@ class WildController extends AbstractController
         $programsRepository = null;
         $programsRepository = $this->getDoctrine()
             ->getRepository(Program::class);
-        $programsByFindBy = $programsRepository->findBy(["category" => $category],["id" => "DESC"],3);
+        $programsByFindBy = $programsRepository->findBy(["category" => $category], ["id" => "DESC"], 3);
         //</editor-fold>
 
         //<editor-fold desc="Methode  pour lire les objets via query symfony">
@@ -207,8 +219,8 @@ class WildController extends AbstractController
             return $this->goTo404($message, $function, true);
         }
         $programName = preg_replace(
-        '/-/',
-        ' ', ucwords(trim(strip_tags($programName)), "-"));
+            '/-/',
+            ' ', ucwords(trim(strip_tags($programName)), "-"));
 
         $program = $this->getDoctrine()
             ->getRepository(Program::class)
@@ -227,8 +239,8 @@ class WildController extends AbstractController
 
         foreach ($seasons as $season) {
             $complexSeasons[] = [
-            "season" =>$season,
-            "stringNumber" =>ucfirst(SELF::NUMBERS[$season->getNumber()])
+                "season" => $season,
+                "stringNumber" => ucfirst(SELF::NUMBERS[$season->getNumber()])
             ];
         }
 
@@ -243,7 +255,8 @@ class WildController extends AbstractController
     /**
      * @Route("/season/{id<[0-9]{1,5}>}", name="season")
      */
-    public function showBySeason(int $id = 0 ){
+    public function showBySeason(int $id = 0)
+    {
 
         if (!$id || $id === 0) {
             $message = "Impossible d'afficher la saison demandée , demande vide.";
@@ -266,7 +279,7 @@ class WildController extends AbstractController
         $program = $season->getProgram();
 
         $complexEpisodes = [];
-        $programNameLink = $program->getTitleUrlLinkFormated() ; // get the program name formated for isered link twig
+        $programNameLink = $program->getTitleUrlLinkFormated(); // get the program name formated for isered link twig
 
         foreach ($episodes as $episode) {
             $complexEpisodes[] = [
@@ -296,7 +309,6 @@ class WildController extends AbstractController
     }
 
 
-
     /**
      * @Route("/new", methods={"POST"}, name="new")
      */
@@ -315,17 +327,18 @@ class WildController extends AbstractController
         return $this->redirectToRoute('wild_show', ['page' => 1]);
     }*/
 
-    private function goTo404(string $message , string $funtion, bool $displayOnlyMessage=false){
+    private function goTo404(string $message, string $funtion, bool $displayOnlyMessage = false)
+    {
         try {
             $msgBefore = "";
             $msgAfter = "";
-            if(!$displayOnlyMessage){
+            if (!$displayOnlyMessage) {
                 $msgBefore = " 404 - Bad URL: ";
                 $msgAfter = " Origine du  message: [ " . $funtion . " ]";
             }
-            throw $this->createNotFoundException($msgBefore . $message );
+            throw $this->createNotFoundException($msgBefore . $message);
         } catch (\Exception $e) {
-                return $this->render('_404.html.twig', ['msg' => $e->getMessage(),"msgAfter" => $msgAfter]);
+            return $this->render('_404.html.twig', ['msg' => $e->getMessage(), "msgAfter" => $msgAfter]);
         }
     }
 
