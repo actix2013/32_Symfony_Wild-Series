@@ -50,7 +50,7 @@
                 <ul class="list-inline">
                     {% for actor in program.actors %}
                         <li>
-                            <a class="text-dark" href="{{ path('actor_show', {'id': actor.id}) }}">
+                            <a class="text-dark" href="{{ path('actor_show', {'slug': actor.slug}) }}">
                                 {{ actor.name }} </a>
 
                         </li>
