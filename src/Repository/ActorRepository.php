@@ -19,6 +19,22 @@ class ActorRepository extends ServiceEntityRepository
         parent::__construct($registry, Actor::class);
     }
 
+    /**
+     * @return Actor[] Returns an array of Actor objects
+     */
+
+    public function findByExampleField()
+    {
+        return $this->createQueryBuilder('a')
+            ->orderBy('a.name', 'ASC')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+
+
     // /**
     //  * @return Actor[] Returns an array of Actor objects
     //  */
