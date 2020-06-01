@@ -114,5 +114,5 @@ __Quest 16: Fixtures__
     >_@3 min 32 sec_
     
     
->>>>>>> be5f27d1bb77b977f097dd7ab2b44c5aa494d5dc
+
 [Video link Fixtures](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST16-01-Fixtures.mp4)
