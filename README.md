@@ -112,7 +112,14 @@ __Quest 16: Fixtures__
     >_@3 min 20 sec to 3 min 32 sec_
 - [X] _**Les séries sont définies "à la main" dans la classe App\DataFixtures\ProgramFixtures,**_
     >_@3 min 32 sec_
+<<<<<<< HEAD
     
     
 
 [Video link Fixtures](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST16-01-Fixtures.mp4)
+=======
+
+
+[Video link EntityType](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST16-01-Fixtures.mp4)
+
+>>>>>>> 8fefcb5f0dbdd9b78a174208210ea8c2c6064165
