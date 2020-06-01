@@ -41,9 +41,9 @@
                     <td class="border-left border-dark">
                         <div class="d-flex flex-column">
                             <a class="h6 text-dark bg-white rounded p-2 border border-dark" href="{{ path
-                                ('program_show', {'id': program.id}) }}">show</a>
+                                ('program_show', {'slug': program.slug}) }}">show</a>
                             <a class="h6 text-dark bg-white rounded p-2 border border-dark" href="{{ path
-                                ('program_edit', {'id': program.id}) }}">edit</a>
+                                ('program_edit', {'slug': program.slug}) }}">edit</a>
                         </div>
                     </td>
                 </tr>
