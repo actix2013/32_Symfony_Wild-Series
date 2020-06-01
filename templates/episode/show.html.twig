@@ -7,7 +7,7 @@
     <div class="{{ containerFormTitle }}">
         <h1 class="col-6 p-2 mr-1 text-white">Show Episode: </h1>
         <div class="col-3 mt-1">
-            <a class="{{ btnDelete }}" href="{{ path('episode_edit', {'id': episode.id}) }}">edit</a>
+            <a class="{{ btnDelete }}" href="{{ path('episode_edit', {"slug": episode.slug}) }}">edit</a>
         </div>
         <div class="col-3 mt-1">
             {{ include('episode/_delete_form.html.twig') }}

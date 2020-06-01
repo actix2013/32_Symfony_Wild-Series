@@ -35,9 +35,9 @@
                 <td>
                     <div class="d-flex flex-column">
                         <a class="h6 text-dark bg-white rounded p-2 border border-dark" href="{{ path
-                            ('episode_show', {'id': episode.id}) }}">show</a>
+                            ('episode_show', {"slug": episode.slug}) }}">show</a>
                         <a class="h6 text-dark bg-white rounded p-2 border border-dark" href="{{ path
-                            ('episode_edit', {'id': episode.id}) }}">edit</a>
+                            ('episode_edit', {"slug": episode.slug}) }}">edit</a>
                     </div>
                 </td>
             </tr>

@@ -112,7 +112,38 @@ __Quest 16: Fixtures__
     >_@3 min 20 sec to 3 min 32 sec_
 - [X] _**Les séries sont définies "à la main" dans la classe App\DataFixtures\ProgramFixtures,**_
     >_@3 min 32 sec_
-
     
 
 [Video link Fixtures](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST16-01-Fixtures.mp4)
+
+
+***
+***
+__Quest 17: Service__ 
+
+Paticularitée du service Slugify : il  utilise ( volontairement ) le titre ou le nom  de des items pour générer le
+ slug. j'ai  mis seullement un echantillon des usages. ( trop long !!! )
+
+- [X] _**Les entités Program, Episode, Actor comportent un champ slug,**_
+   >_Not in video see code_ 
+- [X] _**Les routes des différents contrôleurs relatifs aux séries, épisodes, et acteurs utilisent les slugs plutôt que les id,**_
+    >_Not in video see code_
+- [X] _**Le service est appelé à chaque niveau de l’application où il y a un ajout/modification de actor/episode/program**_
+    >_Not in video see code_
+- [X] _**Le service Slugify créé auparavant avec une méthode generate(), permet de générer un slug à partir d'une chaîne de caractères,**_
+    >_Not in video see code_
+- [X] _**Le SHOW program utilisent un slug,**_
+    >_@ 0 min 2 sec_
+- [X] _**Le SHOW actor utilisent un slug,**_
+    >_@ 0 min 8 sec_
+- [X] _**Le SHOW actor utilisent un slug,**_
+    >_@ 0 min 8 sec_
+- [X] _**Le SHOW episode utilisent un slug,**_
+    >_@ 0 min 42 sec_  
+- [X] _**Le EDIT episode utilisent un slug,**_
+    >_@ 1 min 05 sec_    
+- [X] _**Le UPDATE episode utilisent un slug et "slugify correctement la chaine "titre",**_
+    >_@ 1 min 20 sec_    
+
+
+[Video link Service](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST17-01-Service.mp4)
