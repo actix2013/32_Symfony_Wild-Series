@@ -115,3 +115,4 @@ __Quest 16: Fixtures__
 
 
 [Video link EntityType](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST16-01-Fixtures.mp4)
+
