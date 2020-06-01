@@ -66,6 +66,17 @@ __Quest 13: VALIDATION__
 [Video link all  errors  MSG CREATE PROGRAM](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST13-01-Validation.mp4)
 
 
+***
+***
+__Quest 14: Many-To-Many__ 
+
+- [X] _**Sur la page d’un acteur, la liste des séries associées s'affiche**_
+- [X] _**Sur la page d’une série, la liste des acteurs associés s'affiche**_
+- [X] _**Sur la page de l’acteur, lors du clic sur une série de la liste, l'utilisateur est redirigé vers la page de
+ la série sélectionnée**_
+- [X] _**Sur la page d’une série, lors du clic sur un acteur de la liste, l'utilisateur est redirigé vers la page de l’artiste sélectionné**_
+
+[Video link ManyToMany Actors](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST14-01-ManyToMany.mp4)
 
 
 

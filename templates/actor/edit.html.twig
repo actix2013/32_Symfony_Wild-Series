@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Actor{% endblock %}
+
+{% block body %}
+    <div class="{{ containerFormTitle }}">
+        <h1 class="p-2 mr-1 text-white">Edit Actor :</h1>
+    </div>
+<div class="{{ containerForm }}">
+    {% form_theme form 'bootstrap_4_layout.html.twig' %}
+    {{ include('actor/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('actor/_delete_form.html.twig') }}
+</div>
+    <div class="{{ containerEnd }}">
+        <a class="{{ btnBack }}" href="{{ path('actor_index') }}">back to
+            list</a>
+    </div>
+{% endblock %}

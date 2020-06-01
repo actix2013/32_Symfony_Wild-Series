@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Actor{% endblock %}
+
+{% block body %}
+    <div class="{{ containerFormTitle }}">
+        <h1 class="col-6 p-2 mr-1 text-white">Show Actor : </h1>
+        <div class="col-3 mt-1">
+            <a class="{{ btnDelete }}" href="{{ path('actor_edit', {'id': actor.id}) }}">Edit</a>
+        </div>
+        <div class="col-3 mt-1">
+            {{ include('actor/_delete_form.html.twig') }}
+        </div>
+    </div>
+    <table class="table {{ containerTable }} bg-secondary">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ actor.id }}</td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td>{{ actor.name }}</td>
+        </tr>
+        <tr>
+            <th>Actor programs</th>
+            <td>
+
+                <ul class="list-inline">
+                    {% for program in actor.programs %}
+                    <li>
+                            <div class="d-flex justify-content-between bg-white border border-dark rounded">
+                                <a class="text-danger pt-3 pl-5" href="{{ path('program_show', {'id': program.id}) }}">
+                                    {{ program.title }} </a>
+                                <img class="rounded border border-white" src="{{ program.poster }}"
+                                     width="120"/>
+                            </div>
+                    </li>
+
+            {% else %}
+                <li>Aucune série pour cet acteur.</li>
+            {% endfor %}
+            </ul>
+
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="{{ containerEnd }}">
+        <a class="{{ btnDelete }}" href="{{ path('actor_index') }}">back to list</a>
+    </div>
+{% endblock %}
