@@ -10,15 +10,33 @@ use App\Entity\Category;
 
 class CategoryFixtures extends \Doctrine\Bundle\FixturesBundle\Fixture
 {
+    const CATEGORIES = [
+        "Action",
+        "Aventure",
+        "Animation",
+        "Fantastique",
+        "Horreur",
+        "Science Fiction",
+        "Space Opera",
+        "Heroic Fantasy",
+        "Humour",
+        "Drame",
+        "Reportage",
+        "Anticipation",
+        "Enfants",
+        "Manga"
+    ];
 
     /**
      * @inheritDoc
      */
     public function load(ObjectManager $manager)
     {
-        $cathegory = new Category();
-        $cathegory->setName("Fixtures");
-        $manager->persist($cathegory);
+        foreach (SELF::CATEGORIES as $key => $cathegoryName) {
+            $cathegory = new Category();
+            $cathegory->setName($cathegoryName);
+            $manager->persist($cathegory);
+        }
         $manager->flush();
     }
 
