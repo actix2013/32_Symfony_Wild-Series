@@ -34,22 +34,31 @@ background-color: white;
     font-size: 1.5rem;
   }
 }
-
 .myBlockTextBaseBgWhite {
   @extend .myBlockTextBase;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
-  background-color: rgba(0, 0, 0, 0.8);
-  box-shadow: -1px 1px 10px 10px rgba(255, 255, 255, 0.3);
-
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  color: black;
+  background-color: rgba(255,255,255, 0.95);
+  box-shadow: 0px 2px 4px 1px rgba(0,0,0, 0.5);
+  a {
+    color: black;
+    text-decoration: none;
+    font-size: 1.5rem;
+  }
+  p {
+    color: black;
+    text-decoration: none;
+    font-size: 1.5rem;
+  }
 }
 
-
-.bgImgOne {
-  background-image: url('https://www.telerama.fr/sites/tr_master/files/styles/simplecrop1000/public/our_boys_93_ver_1_0.jpg?itok=PIRfhxQA&sc=7737aa218c46466c023415e23d665d7b');
-  background-repeat:no-repeat;
-  background-size  : cover;
+.myBlockBaseBgWhite {
+  @extend .myBlockTextBase;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  color: black;
+  background-color: rgba(255, 255, 255, 0.90);
+  box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.5);
 }
-
 
 
 .myProgramCardCard {
@@ -275,6 +284,17 @@ background-color: white;
 .myTdLink{
   word-break: break-all;
 }
+
+// icones et bacground ***********************************************************************************************//
+
+.bgImgOne {
+  background-image: url('https://www.telerama.fr/sites/tr_master/files/styles/simplecrop1000/public/our_boys_93_ver_1_0.jpg?itok=PIRfhxQA&sc=7737aa218c46466c023415e23d665d7b');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+
 
 @media all and (max-width: 980px) {
   .myButton {
