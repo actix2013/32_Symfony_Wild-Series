@@ -17,34 +17,43 @@
 
     <table class="table {{ containerTable }} bg-secondary">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ program.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ program.title }}</td>
-            </tr>
-            <tr>
-                <th>Summary</th>
-                <td>{{ program.summary }}</td>
-            </tr>
-            <tr>
-                <th>poster visual</th>
-                <td>
-                        <img alt="{{ program.poster }}" class="col-2 rounded border border-white"
-                             src="{{ program.poster }}" width="100"/>
-                </td>
-            </tr>
-            <tr>
-                <th>Poster link</th>
-                <td>
-                    <p>
+        <tr>
+            <th>Id</th>
+            <td>{{ program.id }}</td>
+        </tr>
+        <!-- line 1 -->
+        <tr>
+            <th>Title</th>
+            <td>{{ program.title }}</td>
+        </tr>
+
+        <!-- line 2 -->
+        <tr>
+            <th>Summary</th>
+            <td>{{ program.summary }}</td>
+        </tr>
+
+        <!-- line 3 -->
+        <tr>
+            <th>poster visual</th>
+            <td>
+                <img alt="{{ program.poster }}" class="col-2 rounded border border-white"
+                     src="{{ program.poster }}" width="100"/>
+            </td>
+        </tr>
+
+        <!-- line 4 -->
+        <tr>
+            <th>Poster link</th>
+            <td>
+                <p>
                     <span class="myTdLink">{{ program.poster }}</span>
-                    </p>
-                </td>
-            </tr>
-            <tr>
+                </p>
+            </td>
+        </tr>
+
+        <!-- line 5 -->
+        <tr>
             <th>Program Actors</th>
             <td>
                 <ul class="list-inline">
@@ -60,13 +69,60 @@
                 </ul>
 
             </td>
-            </tr>
+
+            <!-- line 5 -->
+        <tr>
+            <th>Program Comments</th>
+            <td>
+                <ul class="list-inline">
+
+                    <!-- season list -->
+                    {% for season in program.seasons %}
+                        <li>
+                            <a class="text-dark" href="{{ path('season_show', {'id': season.id}) }}"></a>
+
+                            <!-- list episodes -->
+                            {% for episode in season.episodes %}
+                                <!-- variable pour afficher le titre de l'episode une seule fois -->
+                                {% set alreadyShow = false %}
+
+                                <!-- pour chaque commentaire -->
+                                {% for comment in comments %}
+                                    {% if comment.episode == episode %}
+                                        {% if not alreadyShow %}
+
+                                                <p class="font-weight-bold"> Season : [{{ season.number }}], Episode:
+                                                    [{{ episode.title }}]
+                                                    <a class="m-1"
+                                                       href="{{ path('wild_season', { 'id': season.id }) }}">
+                                                        Cliquer ici pour la liste des episodes de cette saison</a>
+                                                </p>
+                                                {% set alreadyShow = true %}
+
+                                        {% endif %}
+                                            <p> Comment by [{{ comment.author }}] and his rate for trhis episode
+                                                {{ comment.rate }} </p>
+                                    {% endif %}
+                                {% else %}
+                                {% endfor %}
+                            {% else %}
+                            {% endfor %}
+
+                        </li>
+                    {% else %}
+                        <li>Aucun acteur pour cette série</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+
+
         </tbody>
 
     </table>
 
     <div class="{{ containerEnd }}">
-    <a class="{{ btnDelete }}" href="{{ path('program_index') }}">back to list</a>
+        <a class="{{ btnDelete }}" href="{{ path('program_index') }}">back to list</a>
     </div>
 
 {% endblock %}

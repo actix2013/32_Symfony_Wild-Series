@@ -3,18 +3,21 @@
 {% block title %}Episode{% endblock %}
 
 {% block body %}
-    <h1>Episode</h1>
-    <div class="{{ containerFormTitle }}">
-        <h1 class="col-6 p-2 mr-1 text-white">Show Episode: </h1>
-        <div class="col-3 mt-1">
-            <a class="{{ btnDelete }}" href="{{ path('episode_edit', {"slug": episode.slug}) }}">edit</a>
+    <div class="{{ containerForm3 }}">
+        <h1>Page Episode</h1>
+        <div class="{{ containerFormTitle }}">
+            <h1 class="col-6 p-2 mr-1 text-white">Episode details : </h1>
+            <div class="col-3 mt-1">
+                <form method="post" action="{{ path('episode_edit', {"slug": episode.slug}) }}">
+                    <button class="{{ btnDelete }}">edit</button>
+                </form>
+            </div>
+            <div class="col-3 ml-1 mt-1">
+                {{ include('episode/_delete_form.html.twig') }}
+            </div>
         </div>
-        <div class="col-3 mt-1">
-            {{ include('episode/_delete_form.html.twig') }}
-        </div>
-    </div>
-    <table class="table {{ containerTable }} bg-secondary">
-        <tbody>
+        <table class="table {{ containerTable }} bg-secondary">
+            <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ episode.id }}</td>
@@ -31,10 +34,22 @@
                 <th>Synopsis</th>
                 <td>{{ episode.synopsis }}</td>
             </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
 
-    <div class="{{ containerEnd }}">
-        <a class="{{ btnDelete }}" href="{{ path('episode_index') }}">back to list</a>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div class="{{ containerFormTitle }}">
+            <h1 class="p-2 mr-1 text-white">Add a comment for this episode: </h1>
+        </div>
+        <div class="{{ containerForm3 }}">
+            {% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+            {{ include('comment/_form.html.twig') }}
+        </div>
+        {% endif %}
+
+        <div class="{{ containerEnd }}">
+            <a class="{{ btnDelete }}" href="{{ path('episode_index') }}">back to list</a>
+        </div>
     </div>
 {% endblock %}

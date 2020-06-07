@@ -29,19 +29,40 @@
             <li>
                 <a class="nav-link myButton" href="{{ path('actor_index') }}">Actors</a>
             </li>
-            <!--
-            <li class="nav-item dropdown">
+            <li>
+
+
+            </li>
+
+            <li class="nav-item dropdown rounded ">
                 <a class="nav-link dropdown-toggle myButton" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">
-                    Dropdown
+                    Mon compte
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-menu w-100 " aria-labelledby="navbarDropdown">
+                    {% if app.user %}
+
+                        <a class="dropdown-item myIconLogout" href="{{ path('app_logout') }}">
+                            Deconnexion <img class="pl-2" width="50" height="50" src="{{ asset
+                                ('Img/icon/logout-red.png') }}"/>
+                         </a>
+
+                    {% else %}
+                        <a class="dropdown-item" href="{{ path('app_login') }}"> Se connecter
+                            <img class="pl-2" width="50" height="50" src="{{ asset
+                                ('Img/icon/man-user_black.png') }}"/>
+                        </a>
+                    {% endif %}
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <p class="dropdown-item shadow-sm bg-primary text-decoration-none" href="#">
+                        {% if app.user.email is defined %}
+                            {{ app.user.email }}
+                        {% else %}
+                            Ananymous
+                        {% endif %}
+                    </p>
                 </div>
-            </li> -->
+            </li>
         </ul>
         <!--
         <form class="form-inline my-2 my-lg-0">
