@@ -153,13 +153,13 @@ Paticularitée du service Slugify : il  utilise ( volontairement ) le titre ou l
 __Quest 19: User__ 
 
 - [X] _**Le formulaire de login est fonctionnel,**_
-   >_Not in video see code_ 
+    >_@ 0 min 3 sec_ 
 - [X] _**Le lien de déconnexion est fonctionnel,**_
-    >_Not in video see code_
+    >_@ 0 min 13 sec_
 - [X] _**Lorsque tu rédiges un commentaire, l’auteur actuellement connecté est bien associé en base de données,**_
-    >_Not in video see code_
+    >_ 0 min 39 sec to 1 min 20sec _
 - [X] _**Les commentaires liés à l’épisode sont affichés dans l’ordre du plus vieux au plus récent,**_
     >_Not in video see code , pas compris la question , implicite vu que les commentaires sont retournés par id via
-le (getComments) => seclectAll = by id.
+le (getComments) => seclectAll = by id,  par precaution j'ai ajouter un sorted explicite ... 
 
-[Video link Service]()
+[Video link Service](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST19-01-User.mp4)
