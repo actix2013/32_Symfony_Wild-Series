@@ -132,18 +132,34 @@ Paticularitée du service Slugify : il  utilise ( volontairement ) le titre ou l
     >_Not in video see code_
 - [X] _**Le service Slugify créé auparavant avec une méthode generate(), permet de générer un slug à partir d'une chaîne de caractères,**_
     >_Not in video see code_
-- [X] _**Le SHOW program utilisent un slug,**_
+- [X] _**Le SHOW program utilise un slug,**_
     >_@ 0 min 2 sec_
-- [X] _**Le SHOW actor utilisent un slug,**_
+- [X] _**Le SHOW actor utilise un slug,**_
     >_@ 0 min 8 sec_
-- [X] _**Le SHOW actor utilisent un slug,**_
+- [X] _**Le SHOW actor utilise un slug,**_
     >_@ 0 min 8 sec_
-- [X] _**Le SHOW episode utilisent un slug,**_
+- [X] _**Le SHOW episode utilise un slug,**_
     >_@ 0 min 42 sec_  
-- [X] _**Le EDIT episode utilisent un slug,**_
+- [X] _**Le EDIT episode utilise un slug,**_
     >_@ 1 min 05 sec_    
-- [X] _**Le UPDATE episode utilisent un slug et "slugify correctement la chaine "titre",**_
+- [X] _**Le UPDATE episode utilise un slug et "slugify correctement la chaine "titre",**_
     >_@ 1 min 20 sec_    
 
 
 [Video link Service](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST17-01-Service.mp4)
+
+***
+***
+__Quest 19: User__ 
+
+- [X] _**Le formulaire de login est fonctionnel,**_
+    >_@ 0 min 3 sec_ 
+- [X] _**Le lien de déconnexion est fonctionnel,**_
+    >_@ 0 min 13 sec_
+- [X] _**Lorsque tu rédiges un commentaire, l’auteur actuellement connecté est bien associé en base de données,**_
+    >_ 0 min 39 sec to 1 min 20sec _
+- [X] _**Les commentaires liés à l’épisode sont affichés dans l’ordre du plus vieux au plus récent,**_
+    >_Not in video see code , pas compris la question , implicite vu que les commentaires sont retournés par id via
+le (getComments) => seclectAll = by id,  par precaution j'ai ajouter un sorted explicite ... 
+
+[Video link Service](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST19-01-User.mp4)

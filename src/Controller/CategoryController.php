@@ -39,7 +39,6 @@ public function add(Request $request): Response
             $name = $data->getName();
             $category = new Category();
             $category->setName($name);
-
             // persist object
             $em = $this->getDoctrine()->getManager();
             $em->persist($category);

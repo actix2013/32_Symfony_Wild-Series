@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Program;
+use App\Entity\Comment;
 use App\Form\ProgramType;
+use App\Repository\CommentRepository;
 use App\Repository\ProgramRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -56,8 +58,22 @@ class ProgramController extends AbstractController
      */
     public function show(Program $program): Response
     {
+
+        //<editor-fold desc="Methode  pour lire les objets via query symfony">
+        $commentsRepository = null;
+        $commentRepository = $this->getDoctrine()
+            ->getRepository(Comment::class);
+        $query = $commentRepository->createQueryBuilder('c')
+            ->orderBy('c.id', 'ASC')
+            ->getQuery();
+        $comments = $query->setMaxResults(1000)->getResult();
+        //</editor-fold>
+
+        //$seasons = $program->getSeasons();
+
         return $this->render('program/show.html.twig', [
             'program' => $program,
+            'comments' => $comments
         ]);
     }
 
@@ -65,8 +81,7 @@ class ProgramController extends AbstractController
      * @Route("/{slug}/edit", name="program_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Program $program, Slugify $slugify): Response
-    {
-        $form = $this->createForm(ProgramType::class, $program);
+    {        $form = $this->createForm(ProgramType::class, $program);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
