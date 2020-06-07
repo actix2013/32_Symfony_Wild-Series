@@ -77,20 +77,20 @@
                 <ul class="list-inline">
 
                     <!-- season list -->
-                    {% for season in seasons %}
+                    {% for season in program.seasons %}
                         <li>
                             <a class="text-dark" href="{{ path('season_show', {'id': season.id}) }}"></a>
 
                             <!-- list episodes -->
                             {% for episode in season.episodes %}
                                 {% set alreadyShow = false %}
-                                {% for comment in episode.comments %}
+                                {% for comment in comments %}
                                     {% if not alreadyShow %}
                                         <p class="font-weight-bold"> Season : [{{ season.number }}], Episode:
-                                            [{{ episode.title }}] <a class="m-1"
-                                                                     href="{{ path('wild_season', { 'id': season.id }) }}">
-                                                Cliquer ici pour afficher les pisodes de cette saison
-                                            </a></p>
+                                            [{{ episode.title }}]
+                                            <a class="m-1" href="{{ path('wild_season', { 'id': season.id }) }}">
+                                                Cliquer ici pour afficher les pisodes de cette saison</a>
+                                        </p>
 
                                         {% set alreadyShow = true %}
                                     {% endif %}
