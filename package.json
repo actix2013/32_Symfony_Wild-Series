@@ -21,6 +21,7 @@
         "jquery": "^3.5.1",
         "popper.js": "^1.16.1",
         "promises": "^0.2.5",
-        "webpack-cli": "^3.3.11"
+        "webpack-cli": "^3.3.11",
+        "websocket-extensions": "^0.1.4"
     }
 }
