@@ -87,8 +87,6 @@ class WildController extends AbstractController
             $doctrine = $this->getDoctrine();
             $repository = $doctrine->getRepository(Program::class);
             $programs = $repository->findAll();
-
-
         }
 
 

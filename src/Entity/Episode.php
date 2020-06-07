@@ -47,7 +47,7 @@ class Episode
     private $slug;
 
     /**
-     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="Episode")
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="episode")
      */
     private $comments;
 
@@ -105,7 +105,6 @@ class Episode
     public function setSeason(?Season $season): self
     {
         $this->season = $season;
-
         return $this;
     }
 
@@ -117,7 +116,6 @@ class Episode
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
-
         return $this;
     }
 

@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Program;
+use App\Entity\Comment;
 use App\Form\ProgramType;
+use App\Repository\CommentRepository;
 use App\Repository\ProgramRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -56,8 +58,14 @@ class ProgramController extends AbstractController
      */
     public function show(Program $program): Response
     {
+
+        $commentsRepository = $this->getDoctrine()->getRepository(Comment::class);
+        $comments = $commentsRepository->findAll();
+        $seasons = $program->getSeasons();
+
         return $this->render('program/show.html.twig', [
             'program' => $program,
+            'seasons' => $seasons
         ]);
     }
 

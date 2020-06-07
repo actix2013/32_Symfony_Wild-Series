@@ -43,6 +43,7 @@ class Comment
         return $this->id;
     }
 
+
     public function getComment(): ?string
     {
         return $this->comment;
