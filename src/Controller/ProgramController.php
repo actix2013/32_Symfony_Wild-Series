@@ -54,8 +54,8 @@ class ProgramController extends AbstractController
             //<editor-fold desc="Gestion envoi de l'email">
 
             $email = (new TemplatedEmail())
-                ->from('wildserie@monsite.com')
-                ->to('actix2013@gamil.com')
+                ->from($this->getParameter("mailer_from"))
+                ->to($this->getParameter("mailer_to"))
                 ->subject('Une nouvelle série vient d\'être publiée !')
                 // path of the Twig template to render
                 ->htmlTemplate('emails/newprogram.html.twig')
