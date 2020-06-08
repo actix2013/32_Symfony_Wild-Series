@@ -42,8 +42,10 @@
                         <div class="d-flex flex-column">
                             <a class="h6 text-dark bg-white rounded p-2 border border-dark" href="{{ path
                                 ('program_show', {'slug': program.slug}) }}">show</a>
-                            <a class="h6 text-dark bg-white rounded p-2 border border-dark" href="{{ path
-                                ('program_edit', {'slug': program.slug}) }}">edit</a>
+                            {% if is_granted("ROLE_ADMIN") %}
+                                <a class="h6 text-dark bg-white rounded p-2 border border-dark" href="{{ path
+                                    ('program_edit', { 'slug': program.slug} ) }}">Éditer</a>
+                            {% endif %}
                         </div>
                     </td>
                 </tr>
