@@ -60,12 +60,14 @@ class CommentController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="comment_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
+     * @IsGranted("ROLE_SUBSCRIBER")
      */
     public function edit(Request $request, Comment $comment): Response
     {
+        //todo implement test if comments is admin or is same author as logged user
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
