@@ -1,0 +1,52 @@
+{% extends 'emails/base_email.html.twig' %}
+
+{% block title %}Program index{% endblock %}
+
+{% block body %}
+    {# templates/emails/signup.html.twig #}
+    <div class="{{ containerFormTitle }}">
+        <h1>An event from WildSerie !</h1>
+    </div>
+    <div class="{{ containerForm3 }}">
+        <p>
+            A new series has been added by following email: {{ app.user.email|default("Anonymous") }}
+        </p>
+        {#<p><code>{{ email.to[0].address }}</code></p>#}
+        <p>
+            New program added by {{ app.user.username|default("Anonymous") }} : {{ program.title }}
+        </p>
+
+        <table class="table {{ containerTable }}">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Summary</th>
+                <th>Poster</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ program.id }}</td>
+                <td class="border-left border-dark">{{ program.title }}</td>
+                <td class="border-left border-dark">{{ program.summary }}</td>
+
+                <td class="border-left border-dark">
+                    <div class="d-flex align-items-left justify-content-left align-content-left">
+                        <div class="p-1 bg-danger border border-white rounded">
+                            <img class="rounded border border-white" src="{{ program.poster }}" width="150"/>
+                        </div>
+                    </div>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+
+            <div class="align-items-centerter justify-content-around align-content-center">
+                <a class="{{ btnDelete }} align-self-center" href="{{ url
+                    ('program_show', {'slug': program.slug}) }}"> see it online</a>
+            </div>
+
+    </div>
+{% endblock %}
