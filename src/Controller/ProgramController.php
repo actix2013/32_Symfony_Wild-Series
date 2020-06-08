@@ -12,6 +12,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\Slugify;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\Mime\Address;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
+
 
 /**
  * @Route("/program")
@@ -31,18 +36,37 @@ class ProgramController extends AbstractController
     /**
      * @Route("/new", name="program_new", methods={"GET","POST"})
      */
-    public function new(Request $request, Slugify $slugify): Response
+    public function new(Request $request, MailerInterface $mailer, Slugify $slugify ): Response
     {
+
         $program = new Program();
         $form = $this->createForm(ProgramType::class, $program);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $entityManager = $this->getDoctrine()->getManager();
             $slug = $slugify->generate($program->getTitle());
             $program->setSlug($slug);
             $entityManager->persist($program);
             $entityManager->flush();
+
+            //<editor-fold desc="Gestion envoi de l'email">
+
+            $email = (new TemplatedEmail())
+                ->from($this->getParameter("mailer_from"))
+                ->to($this->getParameter("mailer_to"))
+                ->subject('Une nouvelle série vient d\'être publiée !')
+                // path of the Twig template to render
+                ->htmlTemplate('emails/newprogram.html.twig')
+                // pass variables (name => value) to the template
+                ->context([
+                    'expiration_date' => new \DateTime('+7 days'),
+                    'username' => 'foo',
+                    'program' => $program,
+                ]);
+            $mailer->send($email);
+            //</editor-fold>
 
             return $this->redirectToRoute('program_index');
         }

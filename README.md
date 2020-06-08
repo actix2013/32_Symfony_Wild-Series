@@ -163,3 +163,16 @@ __Quest 19: User__
 le (getComments) => seclectAll = by id,  par precaution j'ai ajouter un sorted explicite ... 
 
 [Video link Service](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST19-01-User.mp4)
+
+***
+***
+__Quest 18: SendEmail__ 
+
+- [X] _**Le mail du destinataire (administrateur) est issu d'une variable d'environnement,**_
+    >_@ 0 min 14 sec_ 
+- [X] _**Le contenu des mails envoyés reprend l'apparence générale de l'application, à l'aide d'un layout de mail général et se trouve dans une vue Twig**_
+    >_@ 1 min 05 sec_
+- [X] _**Le contenu du mail indique le titre de la nouvelle série publiée, ainsi qu'un lien vers la nouvelle série.**_
+    >_ 1 min 15 sec 
+
+[Video link Service](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST18-01-Email.mp4)

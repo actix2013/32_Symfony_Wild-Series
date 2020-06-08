@@ -76,6 +76,4 @@ class ActorFixtures extends \Doctrine\Bundle\FixturesBundle\Fixture implements D
     {
         return [ProgramFixtures::class];
     }
-
-
 }
