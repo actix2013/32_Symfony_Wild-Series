@@ -38,8 +38,9 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
+        # ALL ACLs have been replaced by @isgranted for each funtions in controler
         #  - { path: ^/, roles: ALL }
         #  - { path: ^/wild, roles: ALL }
-        #  - { path: ^/program, roles: ROLE_ADMIN } # security in controler @isgranted
-        - { path: ^/episode/(.+)/edit, roles: ROLE_ADMIN }
-        - { path: ^/season/(.+)/edit, roles: ROLE_ADMIN }
+        #  - { path: ^/program, roles: ROLE_ADMIN }
+        #- { path: ^/episode/(.+)/edit, roles: ROLE_ADMIN }
+        #- { path: ^/season/(.+)/edit, roles: ROLE_ADMIN }
