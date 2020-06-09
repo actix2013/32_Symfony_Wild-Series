@@ -40,6 +40,17 @@ class UserFixtures extends Fixture
 
         $manager->persist($admin);
 
+        // Création d’un utilisateur de type “administrateur”
+        $admin = new User();
+        $admin->setEmail('admin@monsite.com');
+        $admin->setRoles(['ROLE_ADMIN']);
+        $admin->setPassword($this->passwordEncoder->encodePassword(
+            $admin,
+            'pwd'
+        ));
+
+        $manager->persist($admin);
+
         // Sauvegarde des 2 nouveaux utilisateurs :
         $manager->flush();
 

@@ -176,3 +176,20 @@ __Quest 18: SendEmail__
     >_ 1 min 15 sec 
 
 [Video link Service](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST18-01-Email.mp4)
+
+***
+***
+__Quest 20: Symfony : Sécurisons nos routes.__ 
+
+- [X] _**Le fichier security.yaml est configuré correctement avec une gestion de la hiérarchie,est configuré correctement avec une gestion des chemins sécurisée**_
+    >_@ 0 min 01 sec_ 
+- [X] _**Un utilisateur reconnu comme "anonymous" ne peut accéder qu'à la page d’accueil,  aux pages de listing détails des séries, saison, épisodes et acteur.**_
+    >_@ 0 min 11 sec_ ( echantillon )
+- [X] _**Un utilisateur reconnu comme "abonné" peut ajouter un commentaire, ne peut supprimer un commentaire que s’il
+ est lui-même l’auteur.**_
+    >_ 1 min 17 sec ( echantillon )
+- [X] _**Un utilisateur reconnu comme "administrateur" peut accéder à l'ensemble du site, dont la modification de toutes les séries, saisons, épisodes, acteurs et la création de catégories.**_
+    >_ 1 min 50 sec ( echantillon )
+
+[Video link Service](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST20-01-User.mp4)
+

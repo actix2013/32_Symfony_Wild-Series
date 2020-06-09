@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="{{ containerForm3 }}">
-        <h1>Page Episode</h1>
+
         <div class="{{ containerFormTitle }}">
             <h1 class="col-6 p-2 mr-1 text-white">Episode details : </h1>
             <div class="col-3 mt-1">
@@ -37,7 +37,7 @@
             </tbody>
         </table>
 
-        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% if form is defined %}
         <div class="{{ containerFormTitle }}">
             <h1 class="p-2 mr-1 text-white">Add a comment for this episode: </h1>
         </div>
