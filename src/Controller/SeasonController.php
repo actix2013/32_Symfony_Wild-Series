@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Season;
 use App\Form\SeasonType;
 use App\Repository\SeasonRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,9 +28,11 @@ class SeasonController extends AbstractController
 
     /**
      * @Route("/new", name="season_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function new(Request $request): Response
     {
+
         $season = new Season();
         $form = $this->createForm(SeasonType::class, $season);
         $form->handleRequest($request);
@@ -42,6 +45,7 @@ class SeasonController extends AbstractController
             return $this->redirectToRoute('season_index');
         }
 
+
         return $this->render('season/new.html.twig', [
             'season' => $season,
             'form' => $form->createView(),
@@ -50,6 +54,7 @@ class SeasonController extends AbstractController
 
     /**
      * @Route("/{id}", name="season_show", methods={"GET"})
+     * @IsGranted("IS_AUTHENTICATED_ANONYMOUSLY")
      */
     public function show(Season $season): Response
     {
@@ -60,6 +65,7 @@ class SeasonController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="season_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function edit(Request $request, Season $season): Response
     {
@@ -80,6 +86,7 @@ class SeasonController extends AbstractController
 
     /**
      * @Route("/{id}", name="season_delete", methods={"DELETE"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Season $season): Response
     {
