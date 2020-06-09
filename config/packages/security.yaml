@@ -40,7 +40,6 @@ security:
     access_control:
         #  - { path: ^/, roles: ALL }
         #  - { path: ^/wild, roles: ALL }
-        - { path: ^/program, roles: ROLE_SUBSCRIBER }
-        - { path: ^/program, roles: ROLE_SUBSCRIBER }
-        - { path: ^/program, roles: ROLE_SUBSCRIBER }
-        - { path: ^/program, roles: ROLE_SUBSCRIBER }
+        #  - { path: ^/program, roles: ROLE_ADMIN } # security in controler @isgranted
+        - { path: ^/episode/(.+)/edit, roles: ROLE_ADMIN }
+        - { path: ^/season/(.+)/edit, roles: ROLE_ADMIN }

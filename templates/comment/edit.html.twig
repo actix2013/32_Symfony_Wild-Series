@@ -3,11 +3,17 @@
 {% block title %}Edit Comment{% endblock %}
 
 {% block body %}
-    <h1>Edit Comment</h1>
+    <div class="{{ containerFormTitle }}">
+        <h1 class="p-2 mr-1 text-white">Edit Comment : </h1>
+    </div>
+<div class="{{ containerForm3 }}">
+    {% form_theme form 'bootstrap_4_layout.html.twig' %}
 
     {{ include('comment/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('comment_index') }}">back to list</a>
-
     {{ include('comment/_delete_form.html.twig') }}
+</div>
+    <div class="{{ containerEnd }}">
+        <a class="{{ btnBack }}" href="{{ path('comment_index') }}">back to
+            list</a>
+    </div>
 {% endblock %}

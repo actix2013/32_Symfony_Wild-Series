@@ -71,42 +71,30 @@ public function add(Request $request): Response
      *
      * @return \Symfony\Component\HttpFoundation\Response
      * @Route("/delete/{category<[0-9]{1,3}>}" , name="delete")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Category $category)
     {
-
         $pageTitle = "Add a category";
         $em = $this->getDoctrine()->getManager();
         $em->remove($category);
         $em->flush();
         return $this->redirectToRoute('category_index');
 
-
-
-
-        /*if (!$programs) {
-           throw $this->createNotFoundException("No program found in program's table");
-        }
-        return $this->render('category/add.html.twig', ['website' => 'Wild Séries', "programs" => $programs,
-            'form' => $form->createView(), "pageTitle" => $pageTitle
-        ]);*/
     }
 
 
     /**
      * @Route("/", name="index")
      * @return \Symfony\Component\HttpFoundation\Response
+     * @IsGranted("IS_AUTHENTICATED_ANONYMOUSLY")
      */
     public function index(): Response
     {
-
         $pageTitle = "List of category :";
         $doctrine = $this->getDoctrine();
         $repository = $doctrine->getRepository(Category::class);
         $categorys = $repository->findAll();
-        /*if (!$programs) {
-           throw $this->createNotFoundException("No program found in program's table");
-        }*/
         return $this->render('category/index.html.twig', ['website' => 'Wild Séries', "categorys" => $categorys,
             "pageTitle" => $pageTitle
         ]);

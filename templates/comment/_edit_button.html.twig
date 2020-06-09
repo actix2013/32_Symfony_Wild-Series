@@ -1,0 +1,9 @@
+{% set userControl = app.user.email|default("anonymous") %}
+{% if userControl == comment.author.email or is_granted("ROLE_ADMIN") %}
+<div class="col-3 mt-1">
+    <form method="post" action="{{ path('comment_edit', {"id": comment.id}) }}">
+        <button class="{{ btnDelete }}">edit</button>
+
+    </form>
+</div>
+{% endif %}

@@ -3,9 +3,15 @@
 {% block title %}Comment{% endblock %}
 
 {% block body %}
-    <h1>Comment</h1>
-
-    <table class="table">
+<div class="{{ containerForm3 }}">
+    <div class="{{ containerFormTitle }}">
+        <h1 class="col-6 p-2 mr-1 text-white">Comments : </h1>
+            {{ include('comment/_edit_button.html.twig') }}
+        <div class="col-3 ml-1 mt-1">
+            {{ include('comment/_delete_form.html.twig') }}
+        </div>
+    </div>
+    <table class="table {{ containerTable }}">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -22,9 +28,12 @@
         </tbody>
     </table>
 
-    <a href="{{ path('comment_index') }}">back to list</a>
 
-    <a href="{{ path('comment_edit', {'id': comment.id}) }}">edit</a>
 
-    {{ include('comment/_delete_form.html.twig') }}
+    <div class="{{ containerEnd }}">
+        <a class="{{ btnDelete }}" href="{{ path('comment_index') }}">back to list</a>
+    </div>
+
+
+</div>
 {% endblock %}
