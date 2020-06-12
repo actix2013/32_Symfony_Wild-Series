@@ -35,18 +35,44 @@
             </li>
 
             <li class="nav-item dropdown rounded ">
+
+                {% if app.user %}
                 <a class="nav-link dropdown-toggle myButton" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">
                     Mon compte
                 </a>
+                {% else %}
+                    <a class="nav-link dropdown-toggle myButton" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                       connexion
+                    </a>
+                {% endif %}
+
                 <div class="dropdown-menu w-100 " aria-labelledby="navbarDropdown">
+                    <p class="dropdown-item shadow-sm bg-primary text-decoration-none" href="#">
+                        {% if app.user.email is defined %}
+                            {{ app.user.email }}
+                        {% else %}
+                            Ananymous
+                        {% endif %}
+                    </p>
+                    <div class="dropdown-divider"></div>
                     {% if app.user %}
+                        <div class="d-flex justify-content-lg-between align-items-center m-3">
+                        <a class="dropdown-item" href="{{ path('app_login') }}">Mon profil
 
+                        </a>
+                        <img class="pl-2" width="50" height="50" src="{{ asset
+                            ('Img/icon/man-user_black.png') }}"/>
+                        </div>
+                    <div class="d-flex justify-content-lg-between align-items-center m-3">
                         <a class="dropdown-item myIconLogout" href="{{ path('app_logout') }}">
-                            Deconnexion <img class="pl-2" width="50" height="50" src="{{ asset
-                                ('Img/icon/logout-red.png') }}"/>
+                            Deconnexion
                          </a>
-
+                        <img class="pl-2" width="50" height="50" src="{{ asset
+                            ('Img/icon/logout-red.png') }}"/>
+                    </div>
                     {% else %}
                         <a class="dropdown-item" href="{{ path('app_login') }}"> Se connecter
                             <img class="pl-2" width="50" height="50" src="{{ asset
@@ -57,14 +83,6 @@
                                 ('Img/icon/man-user_black.png') }}"/>
                         </a>
                     {% endif %}
-                    <div class="dropdown-divider"></div>
-                    <p class="dropdown-item shadow-sm bg-primary text-decoration-none" href="#">
-                        {% if app.user.email is defined %}
-                            {{ app.user.email }}
-                        {% else %}
-                            Ananymous
-                        {% endif %}
-                    </p>
                 </div>
             </li>
         </ul>
