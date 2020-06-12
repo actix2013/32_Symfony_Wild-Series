@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\LoginFormAuthentificatorAuthenticator;
+use App\Service\Slugify;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -57,6 +58,9 @@ class SecurityController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
+
+            $slug = new Slugify();
+            $user->setSlug($slug->generate($user->getEmail()));
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);

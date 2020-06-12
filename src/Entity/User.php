@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use App\Service\Slugify;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -43,6 +44,11 @@ class User implements UserInterface
      */
     private $comments;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $slug;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -61,7 +67,8 @@ class User implements UserInterface
     public function setEmail(string $email): self
     {
         $this->email = $email;
-
+        $slug = new Slugify();
+        $this->setSlug($slug->generate($email));
         return $this;
     }
 
@@ -160,6 +167,18 @@ class User implements UserInterface
     public function __toString() : String
     {
         return $this->getEmail();
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(?string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
     }
 
 }
