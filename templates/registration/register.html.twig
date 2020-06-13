@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<div class="{{ containerFormTitle }}">
+    <h1>Register: </h1>
+</div>
+
+<div class="{{ containerForm3 }}">
+    {% form_theme  registrationForm 'bootstrap_4_layout.html.twig' %}
+    {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.plainPassword) }}
+        {{ form_row(registrationForm.agreeTerms) }}
+
+        <button class="{{ btnDelete }}" type="submit" class="btn">Register</button>
+    {{ form_end(registrationForm) }}
+</div>
+{% endblock %}
+
+
