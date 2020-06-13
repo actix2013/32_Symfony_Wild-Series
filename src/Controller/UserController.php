@@ -5,11 +5,14 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
+use App\Service\Slugify;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\ExpressionLanguage\Expression;
+use Symfony\Component\Finder\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/user" , name="user_")
@@ -37,6 +40,10 @@ class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $slug = new Slugify();
+            $user->setSlug($slug->generate($user->getEmail()));
+            $roles = $user->getRoles();
+            $user->setRoles($roles);
             $entityManager->persist($user);
             $entityManager->flush();
 
@@ -51,6 +58,7 @@ class UserController extends AbstractController
 
     /**
      * @Route("/{id}", name="show", methods={"GET"})
+     * @IsGranted({"ROLE_ADMIN"})
      */
     public function show(User $user): Response
     {
@@ -68,6 +76,10 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $slug = new Slugify();
+            $user->setSlug($slug->generate($user->getEmail()));
+            $roles = $user->getRoles();
+            $user->setRoles($roles);
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('user_index');
@@ -96,7 +108,7 @@ class UserController extends AbstractController
 
 
     /**
-     * @Route("/profile/{email}", name="profile", methods={"GET"})
+     * @Route("/my-profile/{slug}", name="profile")
      */
     public function profile(User $user): Response
     {
@@ -108,12 +120,15 @@ class UserController extends AbstractController
             $this->denyAccessUnlessGranted(new Expression(
                     '"ROLE_USER" in roles')
             );
+            if($connectedUser->getEmail() != $user->getEmail()){
+                throw new AccessDeniedException("Acces refusé, Tentative d'accées a un profil avec un compte non autorisé");
+            }
         } catch (
         \Symfony\Component\Security\Core\Exception\AccessDeniedException $e) {
-            return $this->redirectToRoute('wild_index');
+            return $this->redirectToRoute('app_index');
         }
 
-        return $this->render('user/show.html.twig', [
+        return $this->render('user/my-profile.html.twig', [
             'user' => $user,
         ]);
     }

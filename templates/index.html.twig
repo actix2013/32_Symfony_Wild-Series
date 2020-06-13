@@ -5,24 +5,48 @@
 
 
 {% block body %}
+
     <div class="mt-xl-5 p-xl-3 myBlockTextBase border border-white">
-    <h1>Bienvenue sur Wild Series !</h1>
+        <h1>Welcome to Wild Series !</h1>
 
+        <div class="container pl-5 mb-lg-5 ">
+        <div class="col-11 m-5 p-5 border border-danger rounded myBlockTextBase">
+            {% form_theme form 'bootstrap_4_layout.html.twig' %}
+            {{ form_start(form) }}
+            {{ form_row(form.searchField) }}
+            <button class="{{ btnDelete }}" name="btnSearch">Search series</button>
+            {{ form_end(form) }}
+        </div>
+        <h1 class="ml-xl-5 mt-5 mb-lg-5">{{ pageTitle }} </h1>
 
-    <a href="{{ path('wild_show', {'slug':"paroduit-1"}) }}">Afficher la page 1</a><br>
-    <a href="{{ path('wild_show', {'slug':5}) }}">Afficher la page 5</a><br>
-    {# templates/index.html.twig #}
-    <a href="{{ path('wild_show', { 'slug': "walking-dead" }) }}">
-        Testing show() method from WildController with a real program s slug.
-    </a>
-    <br>
-    <a href="{{ path('wild_show', { 'slug': "Penny-Dreadful" }) }}">
-        Testing show() method from WildController with a real program s slug Penny-Dreadful.
-    </a>
-    <br>
-    <a href="{{ path('wild_index') }}">
-        Testing index() method from WildController to view all programs.
-    </a>
+        <ul class="list-unstyled">
+            {% for program in programs %}
+                <li class="mb-5">
+                    <div class="myBlockTextBaseBgWhite p-3">
+                        <h2>{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
+                        <div class="d-flex justify-content-sm-around">
+                        <p>{{ program.summary }}</p>
+                            <img class="ml-auto rounded shadow" width="200" src="{{ program.poster }}"/>
+                        </div>
+                        <a class="h4 text-decoration-none text-danger"
+                           href="{{ path('wild_program', { 'programName':program
+                               .title|replace
+                                   ({" ": "-"}) }) }}">
+                            Click here for show seasons .
+                        </a>
+                        <hr>
+                    </div>
+                </li>
+            {% else %}
+                <li class="mb-5 ml-5">
+                    <div>
+                        <h2> Aucune série trouvée.</h2>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
     </div>
+    </div>
+
 
 {% endblock %}

@@ -32,6 +32,7 @@ security:
             # switch_user: true
 
     role_hierarchy:
+            ROLE_USER: ROLE_BASE
             ROLE_SUBSCRIBER: ROLE_USER
             ROLE_ADMIN:  ROLE_SUBSCRIBER
 
@@ -39,7 +40,7 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         # ALL ACLs have been replaced by @isgranted for each funtions in controler
-        #  - { path: ^/, roles: ALL }
+             - { path: ^/user, roles: ROLE_USER }
         #  - { path: ^/wild, roles: ALL }
         #  - { path: ^/program, roles: ROLE_ADMIN }
         #- { path: ^/episode/(.+)/edit, roles: ROLE_ADMIN }
