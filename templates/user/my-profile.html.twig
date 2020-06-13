@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User{% endblock %}
+
+{% block body %}
+    <div class="{{ containerFormTitle }}">
+        <h1 class="col-6 p-2 mr-1 text-white">My profile ( {{ user.email }}) : </h1>
+    </div>>
+
+    <table class="table {{ containerTable }} bg-secondary">
+        <tbody>
+        <tr>
+            <th>My unique Id</th>
+            <td>{{ user.id }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ user.email }}</td>
+        </tr>
+        <tr>
+            <th>Roles</th>
+            <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+        </tr>
+
+        <tr>
+            <th>Password</th>
+            <td>{{ user.password }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+{% endblock %}

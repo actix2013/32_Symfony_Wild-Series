@@ -160,9 +160,9 @@ __Quest 19: User__
     >_ 0 min 39 sec to 1 min 20sec _
 - [X] _**Les commentaires liés à l’épisode sont affichés dans l’ordre du plus vieux au plus récent,**_
     >_Not in video see code , pas compris la question , implicite vu que les commentaires sont retournés par id via
-le (getComments) => seclectAll = by id,  par precaution j'ai ajouter un sorted explicite ... 
+le (getComments) => seclectAll = by id,  par précaution j'ai ajouté un critere sorted explicite lors du  get ... 
 
-[Video link Service](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST19-01-User.mp4)
+[Video link create user](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST19-01-User.mp4)
 
 ***
 ***
@@ -175,7 +175,7 @@ __Quest 18: SendEmail__
 - [X] _**Le contenu du mail indique le titre de la nouvelle série publiée, ainsi qu'un lien vers la nouvelle série.**_
     >_ 1 min 15 sec 
 
-[Video link Service](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST18-01-Email.mp4)
+[Video link email](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST18-01-Email.mp4)
 
 ***
 ***
@@ -191,5 +191,23 @@ __Quest 20: Symfony : Sécurisons nos routes.__
 - [X] _**Un utilisateur reconnu comme "administrateur" peut accéder à l'ensemble du site, dont la modification de toutes les séries, saisons, épisodes, acteurs et la création de catégories.**_
     >_ 1 min 50 sec ( echantillon )
 
-[Video link Service](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST20-01-User.mp4)
+[Video link routes](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST20-01-User.mp4)
+
+***
+***
+__Quest 21: Symfony : Inscription d’un utilisateur.__ 
+
+- [X] _**L’accès au formulaire d’inscription, en mode “déconnecté” uniquement, via un lien dans le menu “Se connecter”**_
+    >_@ 0 min 05 sec pour le menu / @ 0 min 52 sec pour la tentative d'access au  register_
+- [X] _**La création du compte via le formulaire, en saisissant,**_
+    >_@ 0 min 25 sec_ 
+- [X] _**L’affichage de la page d’accueil avec les dernières séries listées,**_
+    >_ 0 min 34 sec
+- [X] _**L’accès à la page “Mon compte” via le menu du site en lieu et place de “se connecter”,**_
+    >_ 1 min 16 sec
+- [X] _**L’affichage de la page profile à l’url http://localhost:8000/my-profile/{slug},**_
+    >_ 1 min 25 sec j'ai  volontairement changer la route pour /user/my-profile/{slug} et associé le profil  au
+controler user + slug_
+    
+[Video link enregistrement user]("https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST21-01-User.mp4")
 
