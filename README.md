@@ -211,3 +211,18 @@ controler user + slug_
     
 [Video link enregistrement user]("https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST21-01-User.mp4")
 
+***
+***
+__Quest 22: Symfony : Requêtes personnalisées.__ 
+
+- [X] _**Les requêtes de récupération des séries ainsi que des acteurs doivent être écrites à l’aide du QueryBuilder ou de DQL**_
+    >_@ 0 min 0sec_
+- [X] _**Une seule requête doit être effectuée en base de données pour afficher la liste des séries**_
+    >_@ 0 min 18sec_
+- [X] _**La liste des séries doit comporter une colonne contenant le nom des acteurs liés à une série**_
+    >_ 0 min 34 sec
+- [X] _**Si une série n’a aucun acteur, la mention doit pouvoir apparaître dans la liste,**_
+    >_ 0 min 45 sec
+
+[Video link Query]("https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST22-01-Query.mp4")
+
