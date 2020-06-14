@@ -70,7 +70,7 @@ public function add(Request $request): Response
      * @param $id
      *
      * @return \Symfony\Component\HttpFoundation\Response
-     * @Route("/delete/{category<[0-9]{1,3}>}" , name="delete")
+     * @Route("/delete/{category<[0-9]{1,}>}" , name="delete")
      * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Category $category)
