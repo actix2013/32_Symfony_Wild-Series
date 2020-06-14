@@ -34,6 +34,27 @@ class ProgramRepository extends ServiceEntityRepository
         ;
     }
 
+    public function findAllWithCategories()
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->innerJoin('p.category', 'c')
+            ->addSelect('c')
+            ->getQuery();
+
+        return $qb->execute();
+    }
+
+    public function findAllWithCategoriesAndActors()
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->innerJoin('p.category', 'c')
+            ->leftJoin('p.actors', 'actors')
+            ->addSelect('c')
+            ->addSelect('actors')
+            ->getQuery();
+
+        return $qb->execute();
+    }
 
     /*
     public function findOneBySomeField($value): ?Program
