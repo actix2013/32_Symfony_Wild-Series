@@ -5,8 +5,11 @@ namespace App\Controller;
 use App\Entity\Program;
 use App\Entity\Comment;
 use App\Form\ProgramType;
+use App\Entity\User;
 use App\Repository\CommentRepository;
 use App\Repository\ProgramRepository;
+use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,6 +21,7 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+
 
 
 /**
@@ -51,7 +55,7 @@ class ProgramController extends AbstractController
     /**
      * @Route("/new", name="program_new", methods={"GET","POST"})
      */
-    public function new(Request $request, MailerInterface $mailer, Slugify $slugify ): Response
+    public function new(Request $request, MailerInterface $mailer, Slugify $slugify): Response
     {
 
         $program = new Program();
@@ -124,7 +128,8 @@ class ProgramController extends AbstractController
      * @IsGranted("ROLE_ADMIN")
      */
     public function edit(Request $request, Program $program, Slugify $slugify): Response
-    {        $form = $this->createForm(ProgramType::class, $program);
+    {
+        $form = $this->createForm(ProgramType::class, $program);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -147,7 +152,7 @@ class ProgramController extends AbstractController
      */
     public function delete(Request $request, Program $program): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$program->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $program->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($program);
             $entityManager->flush();
@@ -161,10 +166,14 @@ class ProgramController extends AbstractController
      * @Route("/{id}/wtachlist", name="program_watchlist", methods={"GET","POST"})
      * @IsGranted("ROLE_USER")
      */
-    public function addWatchList(Request $request, Program $program){
-        $manager = $this->getDoctrine()->getManager();
+    public function addWatchList(Request $request, Program $program, EntityManagerInterface $manager)
+    {
         $user = $this->getUser();
-        $user->addProgram($program);
+        if($user->getWatchlist()->contains($program)) {
+            $user->removeWatchlist($program);//remove
+        }else {
+            $user->addWatchlist($program);
+        }
         $manager->flush();
         return $this->redirectToRoute('program_show', ["slug" => $program->getSlug()]);
     }

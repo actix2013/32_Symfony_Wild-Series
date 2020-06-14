@@ -17,6 +17,7 @@
                 <th>Actors</th>
                 <th>Poster</th>
                 <th>actions</th>
+                <th>Add to favorite</th>
             </tr>
             </thead>
             <tbody>
@@ -39,7 +40,6 @@
                             <li>
                                 <a class="text-dark" href="{{ path('actor_show', {'slug': actor.slug}) }}">
                                     {{ actor.name }}, </a>
-
                             </li>
                         {% else %}
                             <li><strong>Aucun acteur pour cette série</strong></li>
@@ -51,6 +51,7 @@
                             <img class="rounded border border-white" src="{{ program.poster }}" width="80"/>
                         </div>
                     </td>
+
                     <td class="border-left border-dark">
                         <div class="d-flex flex-column">
                             <a class="h6 text-dark bg-white rounded p-2 border border-dark" href="{{ path
@@ -60,6 +61,9 @@
                                     ('program_edit', { 'slug': program.slug} ) }}">Éditer</a>
                             {% endif %}
                         </div>
+                    </td>
+                    <td class="iconSize50">
+                        <i class="far fa-heart"></i>
                     </td>
                 </tr>
             {% else %}

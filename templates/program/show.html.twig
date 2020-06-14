@@ -3,13 +3,19 @@
 {% block title %}Program{% endblock %}
 
 {% block body %}
-    <div class="{{ containerFormTitle }}">
-        <h1 class="col-6 p-2 mr-1 text-white">Show Program : </h1>
-        <div class="col-3 mt-1">
+    <div class="mb-2 mt-4 d-flex rounded bg-danger border border-white shadow-lg justify-content-between align-items-center">
+        <h1 class="p-2 mr-1 text-white">Show Program : </h1>
+
+        <div class="mt-1">
             <a class="{{ btnDelete }}" href="{{ path('program_edit', {'slug': program.slug }) }}">edit</a>
         </div>
-        <div class="col-3 mt-1">
+        <div class="mt-1">
             {{ include('program/_delete_form.html.twig') }}
+        </div>
+        <div class="mr-1">
+            <a href="{{ path("program_watchlist", {'id': program.id }) }}" class="iconSize50">
+                <i class="{{ app.user.inWatchlist(program) ? 'fas' : 'far' }} fa-heart watchlist"></i>
+            </a>
         </div>
     </div>
 
@@ -91,17 +97,17 @@
                                     {% if comment.episode == episode %}
                                         {% if not alreadyShow %}
 
-                                                <p class="font-weight-bold"> Season : [{{ season.number }}], Episode:
-                                                    [{{ episode.title }}]
-                                                    <a class="m-1"
-                                                       href="{{ path('wild_season', { 'id': season.id }) }}">
-                                                        Cliquer ici pour la liste des episodes de cette saison</a>
-                                                </p>
-                                                {% set alreadyShow = true %}
+                                            <p class="font-weight-bold"> Season : [{{ season.number }}], Episode:
+                                                [{{ episode.title }}]
+                                                <a class="m-1"
+                                                   href="{{ path('wild_season', { 'id': season.id }) }}">
+                                                    Cliquer ici pour la liste des episodes de cette saison</a>
+                                            </p>
+                                            {% set alreadyShow = true %}
 
                                         {% endif %}
-                                            <p> Comment by [{{ comment.author }}] and his rate for this episode
-                                                {{ comment.rate }} </p>
+                                        <p> Comment by [{{ comment.author }}] and his rate for this episode
+                                            {{ comment.rate }} </p>
                                     {% endif %}
                                 {% else %}
                                 {% endfor %}

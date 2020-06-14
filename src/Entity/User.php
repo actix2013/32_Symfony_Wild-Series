@@ -213,4 +213,18 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * @param \App\Controller\Program $program
+     */
+    public function isInWatchlist(Program $program) :bool
+    {
+
+        if ($this->watchlist->contains($program)) {
+            return true;
+        }
+        return false;
+
+    }
+
+
 }
