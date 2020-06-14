@@ -121,6 +121,7 @@ class ProgramController extends AbstractController
 
     /**
      * @Route("/{slug}/edit", name="program_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function edit(Request $request, Program $program, Slugify $slugify): Response
     {        $form = $this->createForm(ProgramType::class, $program);
@@ -142,6 +143,7 @@ class ProgramController extends AbstractController
 
     /**
      * @Route("/{slug}", name="program_delete", methods={"DELETE"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Program $program): Response
     {
@@ -153,5 +155,17 @@ class ProgramController extends AbstractController
         }
 
         return $this->redirectToRoute('program_index');
+    }
+
+    /**
+     * @Route("/{id}/wtachlist", name="program_watchlist", methods={"GET","POST"})
+     * @IsGranted("ROLE_USER")
+     */
+    public function addWatchList(Request $request, Program $program){
+        $manager = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $user->addProgram($program);
+        $manager->flush();
+        return $this->redirectToRoute('program_show', ["slug" => $program->getSlug()]);
     }
 }
