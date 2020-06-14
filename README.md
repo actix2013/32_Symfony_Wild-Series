@@ -226,3 +226,15 @@ __Quest 22: Symfony : Requêtes personnalisées.__
 
 [Video link Query](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST22-01-Query.mp4)
 
+***
+***
+__Quest 23: Symfony : Requêtes personnalisées.__ 
+
+- [X] _**L’affichage des messages flash est correctement configuré dans le fichier base.html.twig**_
+    >_@ 0 min 3 sec_
+- [X] _**L’ajout et l’édition d’une série, saison ou épisode affichent un message flash vert (reprenant le style de la classe “alert-success” de Bootstrap) pour confirmer la réussite de la modification.**_
+    >_@ 0 min 26sec_
+- [X] _**La suppression d’une série, saison ou épisode affiche un message flash rouge (reprenant le style de la classe “alert-danger” de Bootstrap) pour confirmer la réussite de la suppression.**_
+    >_ 0 min 42 sec
+
+[Video link Query](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST23-01-Query.mp4)

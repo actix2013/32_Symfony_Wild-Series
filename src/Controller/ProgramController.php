@@ -130,6 +130,7 @@ class ProgramController extends AbstractController
             $slug = $slugify->generate($program->getTitle());
             $program->setSlug($slug);
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('success', 'The program has been updated');
             return $this->redirectToRoute('program_index');
         }
 
@@ -148,6 +149,7 @@ class ProgramController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($program);
             $entityManager->flush();
+            $this->addFlash('danger', 'The program has been delated');
         }
 
         return $this->redirectToRoute('program_index');
