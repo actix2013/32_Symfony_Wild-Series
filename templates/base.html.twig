@@ -1,32 +1,43 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
-    </head>
-    <body class="bgImgOne">
-        {% set btnDelete = "btn h6 text-dark bg-white rounded p-2 border border-dark myBtnDelete" %}
-        {% set btnUpdate = "btn h6 text-dark bg-white rounded p-2 border border-dark" %}
-        {% set containerForm = "container d-flex-column bg-secondary text-dark rounded shadow-lg" %}
-        {% set containerFormTitle = "mb-2 mt-4 container d-flex rounded bg-dark border border-white shadow-lg" %}
-        {% set containerForm2 = "mb-2 mt-4 d-flex myBlockTextBaseBgWhite" %}
-        {% set containerForm3 = "mb-2 mt-4 container-fluid  myBlockBaseBgWhite" %}
-        {% set containerInside = "m-1 myBlockBaseBgWhite" %}
-        {% set containerTable= "myTable shadow-lg" %}
-        {% set containerEnd = "mb-2 mt-4 container d-flex rounded bg-dark border border-white shadow" %}
-        {% set btnBack = "m-1 h6 text-dark bg-white rounded p-2 border border-white" %}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+</head>
+<body class="bgImgOne">
+{% set btnDelete = "btn h6 text-dark bg-white rounded p-2 border border-dark myBtnDelete" %}
+{% set btnUpdate = "btn h6 text-dark bg-white rounded p-2 border border-dark" %}
+{% set containerForm = "container d-flex-column bg-secondary text-dark rounded shadow-lg" %}
+{% set containerFormTitle = "mb-2 mt-4 container d-flex rounded bg-dark border border-white shadow-lg" %}
+{% set containerForm2 = "mb-2 mt-4 d-flex myBlockTextBaseBgWhite" %}
+{% set containerForm3 = "mb-2 mt-4 container-fluid  myBlockBaseBgWhite" %}
+{% set containerInside = "m-1 myBlockBaseBgWhite" %}
+{% set containerTable= "myTable shadow-lg" %}
+{% set containerEnd = "mb-2 mt-4 container d-flex rounded bg-dark border border-white shadow" %}
+{% set btnBack = "m-1 h6 text-dark bg-white rounded p-2 border border-white" %}
 
-        <header class="container-fluid">
-        {% include "_navbar.html.twig" %}
-    </header>
+<header class="container-fluid">
+    {% include "_navbar.html.twig" %}
+</header>
 
-       <div class="container"> {% block body %}{% endblock %}</div>
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
+<div class="container">
+    {% for category, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% block body %}
+    {% endblock %}
+</div>
 
-    </body>
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+
+</body>
 </html>
