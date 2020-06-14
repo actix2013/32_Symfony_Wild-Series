@@ -17,6 +17,7 @@ class AppFixtures extends Fixture
 
     public function load(\Doctrine\Persistence\ObjectManager $manager)
     {
+
         $faker = \Faker\Factory::create('fr_FR');
 
         for ($i = 1; $i <= 1000; $i++) {
