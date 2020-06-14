@@ -17,6 +17,7 @@ use Symfony\Component\Mime\Address;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 
 /**
@@ -28,8 +29,18 @@ class ProgramController extends AbstractController
      * @Route("/", name="program_index", methods={"GET"})
      * @IsGranted("ROLE_SUBSCRIBER")
      */
-    public function index(ProgramRepository $programRepository): Response
+    public function index(ProgramRepository $programRepository, SessionInterface $session): Response
     {
+        //<editor-fold desc="code coller pour la quete sur les session">
+        // cour sur les session dans symfony
+        if (!$session->has('total')) {
+            $session->set('total', 0); // if total doesn’t exist in session, it is initialized.
+        }
+
+        $total = $session->get('total');
+        //</editor-fold>
+
+
         $programs = $programRepository->findAllWithCategoriesAndActors();
         return $this->render('program/index.html.twig', [
             //'programs' => $programRepository->findAllWithCategories(),
@@ -56,7 +67,7 @@ class ProgramController extends AbstractController
             $entityManager->flush();
 
             //<editor-fold desc="Gestion envoi de l'email">
-
+            $this->addFlash('success', 'The new program has been created');
             $email = (new TemplatedEmail())
                 ->from($this->getParameter("mailer_from"))
                 ->to($this->getParameter("mailer_to"))
@@ -69,9 +80,12 @@ class ProgramController extends AbstractController
                     'username' => 'foo',
                     'program' => $program,
                 ]);
+
             $mailer->send($email);
             //</editor-fold>
 
+            // Once the form is submitted, valid and the data inserted in database, you can define the success flash message
+            $this->addFlash('success', 'Email have been send.');
             return $this->redirectToRoute('program_index');
         }
 

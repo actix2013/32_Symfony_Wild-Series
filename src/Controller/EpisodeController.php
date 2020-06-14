@@ -48,6 +48,7 @@ class EpisodeController extends AbstractController
             $episode->setSlug($slugify->generate($episode->getTitle()));
             $entityManager->persist($episode);
             $entityManager->flush();
+            $this->addFlash('success', 'The new episode has been created');
             return $this->redirectToRoute('episode_index');
         }
         return $this->render('episode/new.html.twig', [
@@ -109,7 +110,7 @@ class EpisodeController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $episode->setSlug($slugify->generate($episode->getTitle()));
             $this->getDoctrine()->getManager()->flush();
-
+            $this->addFlash('success', 'The episode has been updated');
             return $this->redirectToRoute('episode_index');
         }
 
@@ -128,6 +129,7 @@ class EpisodeController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$episode->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($episode);
+            $this->addFlash('danger', 'The episode has been delated');
             $entityManager->flush();
         }
 
