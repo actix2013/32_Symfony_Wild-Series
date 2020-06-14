@@ -206,10 +206,10 @@ __Quest 21: Symfony : Inscription d’un utilisateur.__
 - [X] _**L’accès à la page “Mon compte” via le menu du site en lieu et place de “se connecter”,**_
     >_ 1 min 16 sec
 - [X] _**L’affichage de la page profile à l’url http://localhost:8000/my-profile/{slug},**_
-    >_ 1 min 25 sec j'ai  volontairement changer la route pour /user/my-profile/{slug} et associé le profil  au
+    >_1 min 25 sec j'ai  volontairement changer la route pour /user/my-profile/{slug} et associé le profil  au
 controler user + slug_
-    
-[Video link enregistrement user]("https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST21-01-User.mp4")
+
+[Video link enregistrement user](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST21-01-User.mp4)
 
 ***
 ***
@@ -224,5 +224,5 @@ __Quest 22: Symfony : Requêtes personnalisées.__
 - [X] _**Si une série n’a aucun acteur, la mention doit pouvoir apparaître dans la liste,**_
     >_ 0 min 45 sec
 
-[Video link Query]("https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST22-01-Query.mp4")
+[Video link Query](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST22-01-Query.mp4)
 
