@@ -62,8 +62,13 @@
                             {% endif %}
                         </div>
                     </td>
-                    <td class="iconSize50">
-                        <i class="far fa-heart"></i>
+                    <td>
+                        {% set way = app.request.schemeAndHttpHost ~ path('program_watchlist', {'id': program.id}) %}
+                        <div class="mr-1 iconSize50">
+                            <i id="watchList-{{ program.id }}"
+                               class="{{ app.user.isInWatchlist(program) ? 'fas' : 'far' }} fa-heart watchlist"
+                               data-href="{{ way }}"></i>
+                        </div>
                     </td>
                 </tr>
             {% else %}
@@ -74,4 +79,7 @@
             </tbody>
         </table>
     </div>
+{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('watchlist') }}
 {% endblock %}

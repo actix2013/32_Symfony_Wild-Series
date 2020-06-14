@@ -12,14 +12,15 @@
         <div class="mt-1">
             {{ include('program/_delete_form.html.twig') }}
         </div>
-        <div class="mr-1">
-            <a href="{{ path("program_watchlist", {'id': program.id }) }}" class="iconSize50">
-                <i class="{{ app.user.inWatchlist(program) ? 'fas' : 'far' }} fa-heart watchlist"></i>
-            </a>
+        {% set way = app.request.schemeAndHttpHost ~ path('program_watchlist', {'id': program.id})  %}
+        <div class="mr-1 iconSize50">
+                <i id="watchList-{{ program.id }}" class="{{ app.user.isInWatchlist(program) ? 'fas' : 'far' }} fa-heart watchlist"
+                   data-href="{{ way }}"></i>
         </div>
     </div>
-
-
+    {{ dump( path('program_watchlist', {'id': program.id} )) }}
+    {{ dump(  app.request.schemeAndHttpHost  ) }}
+    {{ dump(  way  ) }}
 
     <table class="table {{ containerTable }} bg-secondary">
         <tbody>
@@ -131,4 +132,7 @@
         <a class="{{ btnDelete }}" href="{{ path('program_index') }}">back to list</a>
     </div>
 
+{% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('watchlist') }}
 {% endblock %}
