@@ -238,3 +238,19 @@ __Quest 23: Symfony : Requêtes personnalisées.__
     >_ 0 min 42 sec
 
 [Video link Query](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST23-01-Query.mp4)
+
+
+***
+***
+__Quest 24: Symfony : Requêtes personnalisées.__ 
+
+- [X] _**L'ajout à la watchlist sur la page de détails fonctionne,**_
+    >_@ 0 min 3 sec_
+- [X] _**L'ajout à la watchlist sur la page de listing fonctionne,**_
+    >_@ 0 min 25sec_
+- [X] _**La page ne se recharge pas lors du clique sur le coeur,**_
+    >_ 0 min 30 sec_
+- [X] _**Si la page est rafraîchie manuellement, le coeur garde son état plein/vide,**_
+    >_ 0 min 45 sec_
+
+[Video link Query](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST24-01-Query.mp4)
