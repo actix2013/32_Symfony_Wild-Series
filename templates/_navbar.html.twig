@@ -8,20 +8,20 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="navbar-brand myButton" href=" /">Wildseries</a>
+                <a class="navbar-brand myButton" href="{{ path('app_index') }}">Wildseries</a>
 
             </li>
             <li>
-                <a class="nav-link myButton " href="/wild">Wild</a>
+                <a class="nav-link myButton " href="{{ path('wild_index') }}">Wild</a>
             </li>
             <li>
                 <a class="nav-link myButton" href="{{ path('category_index') }}">Cat.</a>
             </li>
             <li>
-                <a class="nav-link myButton" href="{{ path('program_index') }}">Prog.</a>
+                <a class="nav-link myButton" href="{{ path('program_index') }}">{% trans %}_program_{% endtrans %}</a>
             </li>
             <li>
-                <a class="nav-link myButton" href="{{ path('season_index') }}">Seas.</a>
+                <a class="nav-link myButton" href="{{ path('season_index') }}">{% trans %}_season_{% endtrans %}</a>
             </li>
             <li>
                 <a class="nav-link myButton" href="{{ path('episode_index') }}">Epis.</a>
@@ -37,49 +37,49 @@
             <li class="nav-item dropdown rounded ">
 
                 {% if app.user %}
-
-                <a class="nav-link dropdown-toggle myButton" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    Account
-                </a>
+                    <a class="nav-link dropdown-toggle myButton" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        {% trans %}_account_{% endtrans %}
+                    </a>
                 {% else %}
                     <a class="nav-link dropdown-toggle myButton" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">
-                       Login & Account
+                        {% trans %}_logaccount_{% endtrans %}
                     </a>
                 {% endif %}
 
                 <div class="dropdown-menu w-100 " aria-labelledby="navbarDropdown">
-                    <p class="dropdown-item shadow-sm bg-primary text-decoration-none" href="#">
+                    <p class="dropdown-item shadow-sm bg-primary text-decoration-none text-wrap" href="#">
                         {% if app.user.email is defined %}
-                            {{ app.user.email }}
+                            {% trans with {'%username%': app.user.email} %}
+                                hello_username
+                            {% endtrans %}
                         {% else %}
-                            Ananymous
+                            ananymous
                         {% endif %}
                     </p>
                     <div class="dropdown-divider"></div>
                     {% if app.user %}
-                        <div class="d-flex justify-content-lg-between align-items-center m-3">
-                        <a class="dropdown-item" href="{{ path('user_profile', { "slug":app.user.slug } ) }}">Mon
-                            profile
-
-                        </a>
-                        <img class="pl-2" width="50" height="50" src="{{ asset
-                            ('Img/icon/man-user_black.png') }}"/>
+                        <div class="d-flex justify-content-sm-between align-items-center m-3">
+                            <a class="dropdown-item myIconLogout"
+                               href="{{ path('user_profile', { "slug":app.user.slug } ) }}">
+                                {% trans %}_account_{% endtrans %}
+                            </a>
+                            <img class="pl-2 mr-3" width="50" height="50" src="{{ asset
+                                ('Img/icon/man-user_black.png') }}"/>
                         </div>
-                    <div class="d-flex justify-content-lg-between align-items-center m-3">
-                        <a class="dropdown-item myIconLogout" href="{{ path('app_logout') }}">
-                            Logout
-                         </a>
-                        <img class="pl-2" width="50" height="50" src="{{ asset
-                            ('Img/icon/logout-red.png') }}"/>
-                    </div>
+                        <div class="d-flex justify-content-sm-between align-items-center m-3">
+                            <a class="dropdown-item myIconLogout" href="{{ path('app_logout') }}">
+                                {{ 'account.logout'|trans }}</a>
+                            <img class="pl-2" width="50" height="50" src="{{ asset
+                                ('Img/icon/logout-red.png') }}"/>
+                        </div>
                     {% else %}
 
                         <a class="dropdown-item d-flex justify-content-sm-between align-items-center" href="{{ path
-                            ('app_login')
-                        }}">
+                            ('app_login') }}">
                             <p class="align-self-center">Login</p>
                             <img class="pl-2" width="50" height="50" src="{{ asset
                                 ('Img/icon/man-user_black.png') }}"/>
@@ -89,6 +89,59 @@
 
                         </a>
                     {% endif %}
+                </div>
+            </li>
+            <li class="nav-item dropdown rounded">
+                <a class="nav-link dropdown-toggle myButton" href="#" id="navbarDropdown" role="button"
+                   data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    {% trans %}
+                       _language_
+                    {% endtrans %}
+                </a>
+
+                <div class="dropdown-menu w-100 " aria-labelledby="navbarDropdown">
+                    <p class="dropdown-item shadow-sm bg-primary text-decoration-none text-wrap" href="#">
+                        {% if app.user.email is defined %}
+                            {% trans with {'%username%': app.user.email} %}
+                                hello_username
+                            {% endtrans %}
+                        {% else %}
+                            ananymous
+                        {% endif %}
+                    </p>
+                    <div class="dropdown-divider"></div>
+                    <div class="d-flex justify-content-sm-between align-items-center m-3">
+                        <a class="dropdown-item myIconLogout"
+                           href="{{ path('app_index', {"_locale":"en"}) }}">
+                            {% trans %}
+                                english_ln
+                            {% endtrans %}
+                        </a>
+                        <img class="" width="40" height="40" src="{{ asset('Img/icon/en_flag_40.png') }}"/>
+                    </div>
+                    <div class="d-flex justify-content-sm-between align-items-center m-3">
+                        <a class="dropdown-item myIconLogout"
+                           href="{{ path('app_index',{"_locale":"es"}) }}">
+                            {% trans %}
+                                Spanish_ln
+                            {% endtrans %}
+                        </a>
+                        <img class="" width="40" height="40" src="{{ asset
+                            ('Img/icon/es_flag_40.png') }}"/>
+                    </div>
+                    <div class="d-flex justify-content-sm-between align-items-center m-3">
+                        <a class="dropdown-item myIconLogout"
+                           href="{{ path('app_index',{"_locale":"fr"}) }}">
+                            {% trans %}
+                                french_ln
+                            {% endtrans %}
+
+                        </a>
+                        <img class="" width="40" height="40" src="{{ asset
+                            ('Img/icon/fr_flag_40.png') }}"/>
+                    </div>
+
                 </div>
             </li>
         </ul>

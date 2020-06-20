@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="LPJNul_" resname="hello">
+        <source>hello</source>
+        <target>Hello</target>
+      </trans-unit>
+      <trans-unit id="CXmLOF4" resname="account.registration">
+        <source>account.registration</source>
+        <target>Register</target>
+      </trans-unit>
+      <trans-unit id="E_t5j6Q" resname="account.login">
+        <source>account.login</source>
+        <target>Sign In</target>
+      </trans-unit>
+      <trans-unit id="CDjx2ju" resname="hello_username">
+        <source>hello_username</source>
+        <target>Hello %username%</target>
+      </trans-unit>
+      <trans-unit id="Q7UTU9q" resname="account.logout">
+        <source>account.logout</source>
+        <target>Log Out</target>
+      </trans-unit>
+      <trans-unit id="ztjYxjS" resname="english_ln">
+        <source>english_ln</source>
+        <target>English</target>
+      </trans-unit>
+      <trans-unit id="YKWmZXL" resname="Spanish_ln">
+        <source>Spanish_ln</source>
+        <target>Spanish</target>
+      </trans-unit>
+      <trans-unit id="hTw1YdO" resname="french_ln">
+        <source>french_ln</source>
+        <target>French</target>
+      </trans-unit>
+      <trans-unit id="J_jQGlY" resname="_title_">
+        <source>_title_</source>
+        <target>Welcome to Wild Series !</target>
+      </trans-unit>
+      <trans-unit id="vziv2nP" resname="_search_series_btn_">
+        <source>_search_series_btn_</source>
+        <target>Search Series</target>
+      </trans-unit>
+      <trans-unit id="qAPsXec" resname="_labalSearch_">
+        <source>_labalSearch_</source>
+        <target>Search a program , type his name or part his name :</target>
+      </trans-unit>
+      <trans-unit id="3maH9n5" resname="_No_Find_Series_">
+        <source>_No_Find_Series_</source>
+        <target>No series found</target>
+      </trans-unit>
+      <trans-unit id="DzCjsWK" resname="_text_link_show_season_">
+        <source>_text_link_show_season_</source>
+        <target>Click here for show seasons .</target>
+      </trans-unit>
+      <trans-unit id="FdmuJXC" resname="_list_last_series_and_search_">
+        <source>_list_last_series_and_search_</source>
+        <target>Last series and search result :</target>
+      </trans-unit>
+      <trans-unit id="nP2PdCn" resname="_program_">
+        <source>_program_</source>
+        <target>Prog.</target>
+      </trans-unit>
+      <trans-unit id="N3B63N8" resname="_season_">
+        <source>_season_</source>
+        <target>Seas.</target>
+      </trans-unit>
+      <trans-unit id="VPOokrz" resname="_account_">
+        <source>_account_</source>
+        <target>Account</target>
+      </trans-unit>
+      <trans-unit id="vNVjD_c" resname="_logaccount_">
+        <source>_logaccount_</source>
+        <target>Sign In</target>
+      </trans-unit>
+      <trans-unit id="zI5.aG9" resname="_language_">
+        <source>_language_</source>
+        <target>Laguage</target>
+      </trans-unit>
+      <trans-unit id="b.i3ZcS" resname="%_labalSearch_%">
+        <source>%_labalSearch_%</source>
+        <target>Search a program , type his name or part his name :</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

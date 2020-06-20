@@ -12,10 +12,14 @@ class ProgramSearchType extends \Symfony\Component\Form\AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('searchField',null,
+        $builder->add('searchField', null,
             [
-            "label" =>"Search a program , type his name or part of his name : "
+                "label" => "%_labalSearch_%",
+                'label_translation_parameters' => [
+                    '%_labalSearch_%' => 'Search a program , type his name or part his name : ',
+                ],
             ]);
     }
+
 }
 
