@@ -254,3 +254,4 @@ __Quest 24: Symfony : Requêtes personnalisées.__
     >_ 0 min 45 sec_
 
 [Video link Query](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST24-01-Query.mp4)
+ss

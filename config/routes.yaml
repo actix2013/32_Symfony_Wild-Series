@@ -1,6 +1,8 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
-#wild_show_bad:
-#   path: /Wild/
-#    controller: App\Controller\WildController::bad
+# route prioritaires sur les configuration locales pour la langue .
+index:
+    path: /
+    controller: App\Controller\DefaultController::index
+
+# config/routes.yaml
+# load some routes - one should ultimately have the path "/app"
+

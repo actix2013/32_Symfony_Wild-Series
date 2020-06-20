@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="LPJNul_" resname="hello">
+        <source>hello</source>
+        <target>Hello</target>
+      </trans-unit>
+      <trans-unit id="CXmLOF4" resname="account.registration">
+        <source>account.registration</source>
+        <target>Register</target>
+      </trans-unit>
+      <trans-unit id="E_t5j6Q" resname="account.login">
+        <source>account.login</source>
+        <target>Sign In</target>
+      </trans-unit>
+      <trans-unit id="CDjx2ju" resname="hello_username">
+        <source>hello_username</source>
+        <target>Hello %username%</target>
+      </trans-unit>
+      <trans-unit id="Q7UTU9q" resname="account.logout">
+        <source>account.logout</source>
+        <target>Log Out</target>
+      </trans-unit>
+      <trans-unit id="ztjYxjS" resname="english_ln">
+        <source>english_ln</source>
+        <target>Anglais</target>
+      </trans-unit>
+      <trans-unit id="YKWmZXL" resname="Spanish_ln">
+        <source>Spanish_ln</source>
+        <target>Espagnol</target>
+      </trans-unit>
+      <trans-unit id="hTw1YdO" resname="french_ln">
+        <source>french_ln</source>
+        <target>Francais</target>
+      </trans-unit>
+      <trans-unit id="vziv2nP" resname="_search_series_btn_">
+        <source>_search_series_btn_</source>
+        <target>Recherche serie(s)</target>
+      </trans-unit>
+      <trans-unit id="vzinP" resname="%_labalSearch_%">
+        <source>%_labalSearch_%</source>
+        <target>Recherche une serie, avec son nom complet ou parie :</target>
+      </trans-unit>
+      <trans-unit id="vyuzinzP" resname="_list_last_series_and_search_">
+        <source>_list_last_series_and_search_</source>
+        <target>Les 3 dernieres series, le resultat des recherches :</target>
+      </trans-unit>
+      <trans-unit id="J_jQGlY" resname="_title_">
+        <source>_title_</source>
+        <target>Bioenvenu sur Wild series !</target>
+      </trans-unit>
+         <trans-unit id="vzinzP" resname="_text_link_show_season_">
+        <source>_text_link_show_season_</source>
+        <target>Cliquer ici pour afficher les saisons.</target>
+      </trans-unit>
+      <trans-unit id="vziyuiunP" resname="_program_">
+        <source>_program_</source>
+        <target>Series.</target>
+      </trans-unit>
+      <trans-unit id="vzinzsdP" resname="_season_">
+        <source>_season_</source>
+        <target>Sais.</target>
+      </trans-unit>
+      <trans-unit id="v12yuzinzP" resname="_account_">
+        <source>_account_</source>
+        <target>Mon compte</target>
+      </trans-unit>
+      <trans-unit id="vyhyuzinzP" resname="_logaccount_">
+        <source>_logaccount_</source>
+        <target>Se connecter</target>
+      </trans-unit>
+      <trans-unit id="vyhyuzzP" resname="_language_">
+        <source>_language_</source>
+        <target>Langue</target>
+      </trans-unit>
+
+    </body>
+  </file>
+</xliff>
