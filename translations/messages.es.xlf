@@ -46,39 +46,39 @@
         <source>_search_series_btn_</source>
         <target>Buscar series</target>
       </trans-unit>
-      <trans-unit id="vzinP" resname="%_labalSearch_%">
+      <trans-unit id="b.i3ZcS" resname="%_labalSearch_%">
         <source>%_labalSearch_%</source>
         <target>Busque un programa, escriba su nombre o parte su nombre:</target>
       </trans-unit>
-      <trans-unit id="vziyunP" resname="_No_Find_Series_">
+      <trans-unit id="3maH9n5" resname="_No_Find_Series_">
         <source>_No_Find_Series_</source>
         <target> No se encontraron series.</target>
       </trans-unit>
-      <trans-unit id="vzinzP" resname="_text_link_show_season_">
+      <trans-unit id="DzCjsWK" resname="_text_link_show_season_">
         <source>_text_link_show_season_</source>
         <target>Haga clic aquí para ver las temporadas.</target>
       </trans-unit>
-      <trans-unit id="vyuzinzP" resname="_list_last_series_and_search_">
+      <trans-unit id="FdmuJXC" resname="_list_last_series_and_search_">
         <source>_list_last_series_and_search_</source>
         <target> Última serie y resultado de búsqueda :</target>
       </trans-unit>
-      <trans-unit id="vziyuiunP" resname="_program_">
+      <trans-unit id="nP2PdCn" resname="_program_">
         <source>_program_</source>
         <target>Serie.</target>
       </trans-unit>
-      <trans-unit id="vzinzsdP" resname="_season_">
+      <trans-unit id="N3B63N8" resname="_season_">
         <source>_season_</source>
         <target>Temp.</target>
       </trans-unit>
-      <trans-unit id="v12yuzinzP" resname="_account_">
+      <trans-unit id="VPOokrz" resname="_account_">
         <source>_account_</source>
         <target>cuenta</target>
       </trans-unit>
-      <trans-unit id="vyhyuzinzP" resname="_logaccount_">
+      <trans-unit id="vNVjD_c" resname="_logaccount_">
         <source>_logaccount_</source>
         <target>Registrar</target>
       </trans-unit>
-      <trans-unit id="vyhyuzzP" resname="_language_">
+      <trans-unit id="zI5.aG9" resname="_language_">
         <source>_language_</source>
         <target>Idioma</target>
       </trans-unit>
