@@ -8,9 +8,12 @@ use App\Service\Slugify;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=ActorRepository::class)
+ * @Vich\Uploadable
  */
 class Actor
 {
@@ -35,6 +38,23 @@ class Actor
      * @ORM\Column(type="string", length=255)
      */
     private $slug;
+
+     /**
+     * @Vich\UploadableField(mapping="actorImg_file", fileNameProperty="image")
+     * @var File
+     */
+    private $actorImg;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $updatedAt;
+
 
     public function __construct()
     {
@@ -111,4 +131,49 @@ class Actor
 
         return $this;
     }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\File\File
+     */
+    public function getActorImg(): ?\Symfony\Component\HttpFoundation\File\File
+    {
+        return $this->actorImg;
+    }
+
+    /**
+     * @param \Symfony\Component\HttpFoundation\File\File $actorImg
+     */
+    public function setActorImg(\Symfony\Component\HttpFoundation\File\File $actorImg): void
+    {
+        if ($actorImg) {
+            $this->updatedAt = new \DateTime('now');
+        }
+        $this->actorImg = $actorImg;
+    }
+
+
 }

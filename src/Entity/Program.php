@@ -9,13 +9,18 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+//Ici on importe le package Vich, que l’on utilisera sous l’alias “Vich”
+use Symfony\Component\Validator\Constraints\DateTime;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * @ORM\Entity(repositoryClass=ProgramRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\ProgramRepository", repositoryClass=ProgramRepository::class)
  * @UniqueEntity(
  *     fields={"title"},
  *     errorPath="title",
  *     message="Ce titre existe déjà.")
+ * @Vich\Uploadable
  */
 class Program
 {
@@ -47,11 +52,6 @@ class Program
     private $summary;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $poster;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="programs")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -71,6 +71,28 @@ class Program
      * @ORM\Column(type="string", length=255)
      */
     private $slug;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $poster;
+
+    //On va créer un nouvel attribut à notre entité, qui ne sera pas lié à une colonne
+    // Tu peux d’ailleurs voir que l’annotation ORM column n’est pas spécifiée car
+    //On ne rajoute pas de données de type file en bdd
+    /**
+     * @Vich\UploadableField(mapping="poster_file", fileNameProperty="poster")
+     * @var File
+     */
+    private $posterFile;
+
+    /**
+     * @ORM\Column(type="datetime" , nullable=true)
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+
 
     public function __construct()
     {
@@ -119,10 +141,9 @@ class Program
         return $this->poster;
     }
 
-    public function setPoster(string $poster): self
+    public function setPoster( $poster): self
     {
         $this->poster = $poster;
-
         return $this;
     }
 
@@ -208,6 +229,33 @@ class Program
 
         return $this;
     }
+
+    public function setPosterFile(File $image = null): Program
+    {
+        $this->posterFile = $image;
+        if ($image) {
+            $this->updatedAt = new \DateTime('now');
+        }
+        return $this;
+    }
+
+    public function getPosterFile(): ?File
+    {
+        return $this->posterFile;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
 
 
 }

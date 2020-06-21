@@ -9,6 +9,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use App\Entity\Actor;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Vich\UploaderBundle\Form\Type\VichFileType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ProgramType extends AbstractType
 {
@@ -20,7 +22,13 @@ class ProgramType extends AbstractType
         $builder
             ->add('title')
             ->add('summary')
-            ->add('poster')
+            ->add('posterFile', VichImageType::class, [
+                'required' => false,
+                'allow_delete' => true, // not mandatory, default is true
+                'download_uri' => true, // not mandatory, default is true
+                'image_uri' => true,
+                'asset_helper' => true,
+            ])
             ->add('category', null, ['choice_label' => 'name'])
         ;
         $builder->add('actors', EntityType::class, [
@@ -36,6 +44,9 @@ class ProgramType extends AbstractType
         ]);
 
     }
+
+
+
 
     public function configureOptions(OptionsResolver $resolver)
     {
