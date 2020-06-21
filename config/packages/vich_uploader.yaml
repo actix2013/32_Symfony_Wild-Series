@@ -8,6 +8,20 @@ vich_uploader:
     mappings:
         poster_file:
             # alias qui nous permet d'accéder à nos images depuis le navigateur
-            uri_prefix: /images/posters
+            uri_prefix: ''
             # Chemin vers le dossier de stockage
-            upload_destination: '%upload_directory%'
+            upload_destination: '%app.path.poster_destination%'
+            delete_on_update:   true
+            delete_on_remove:   true
+            namer: vich_uploader.namer_origname
+
+        actorImg_file:
+            # alias qui nous permet d'accéder à nos images depuis le navigateur
+            uri_prefix: ''
+            # Chemin vers le dossier de stockage
+            upload_destination: '%app.path.actorImg_destination%'
+            delete_on_update:   true
+            delete_on_remove:   true
+            namer: vich_uploader.namer_Uniqid
+
+

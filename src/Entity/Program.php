@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 //Ici on importe le package Vich, que l’on utilisera sous l’alias “Vich”
 use Symfony\Component\Validator\Constraints\DateTime;
-use Vich\UploaderBundle\Entity\File;
+use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -52,11 +52,6 @@ class Program
     private $summary;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $poster;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="programs")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -77,6 +72,11 @@ class Program
      */
     private $slug;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $poster;
+
     //On va créer un nouvel attribut à notre entité, qui ne sera pas lié à une colonne
     // Tu peux d’ailleurs voir que l’annotation ORM column n’est pas spécifiée car
     //On ne rajoute pas de données de type file en bdd
@@ -88,6 +88,7 @@ class Program
 
     /**
      * @ORM\Column(type="datetime" , nullable=true)
+     * @var \DateTime
      */
     private $updatedAt;
 
@@ -140,7 +141,7 @@ class Program
         return $this->poster;
     }
 
-    public function setPoster(string $poster): self
+    public function setPoster( $poster): self
     {
         $this->poster = $poster;
         return $this;
@@ -233,7 +234,7 @@ class Program
     {
         $this->posterFile = $image;
         if ($image) {
-            $this->updatedAt = new DateTime('now');
+            $this->updatedAt = new \DateTime('now');
         }
         return $this;
     }
