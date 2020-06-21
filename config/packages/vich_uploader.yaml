@@ -22,6 +22,5 @@ vich_uploader:
             upload_destination: '%app.path.actorImg_destination%'
             delete_on_update:   true
             delete_on_remove:   true
-            namer: vich_uploader.namer_Uniqid
-
+            namer: vich_uploader.namer_origname
 

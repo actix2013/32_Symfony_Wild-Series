@@ -13,11 +13,13 @@
             {{ include('program/_delete_form.html.twig') }}
         </div>
         {% set way = app.request.schemeAndHttpHost ~ path('program_watchlist', {'id': program.id}) %}
+        {% if app.user %}
         <div class="mr-1 iconSize50">
             <i id="watchList-{{ program.id }}"
                class="{{ app.user.isInWatchlist(program) ? 'fas' : 'far' }} fa-heart watchlist"
                data-href="{{ way }}"></i>
         </div>
+        {% endif %}
     </div>
     <table class="table {{ containerTable }} bg-secondary">
         <tbody>
