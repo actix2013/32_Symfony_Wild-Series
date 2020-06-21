@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 //Ici on importe le package Vich, que l’on utilisera sous l’alias “Vich”
+use Symfony\Component\Validator\Constraints\DateTime;
 use Vich\UploaderBundle\Entity\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
@@ -86,10 +87,11 @@ class Program
     private $posterFile;
 
     /**
-     * @ORM\Column(type="Datetime")
-     * @var Datetime
+     * @ORM\Column(type="datetime")
      */
     private $updatedAt;
+
+
 
     public function __construct()
     {
@@ -240,6 +242,18 @@ class Program
     public function getPosterFile(): ?File
     {
         return $this->posterFile;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
     }
 
 
