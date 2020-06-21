@@ -266,3 +266,14 @@ __Quest 26: embeded controler__
     >_@ 0 min 11 sec_
 [Video link embeded controler](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST26-01-Query.mp4)
 
+***
+***
+__Quest 27: upload__ 
+
+- [X] _**VichUploaderBundle est correctement configuré,**_
+
+- [X] _**L’ajout ainsi que l’update d’image fonctionnent parfaitement,**_
+    >_@ 0 min 10 sec_
+- [X] _**Tes images possèdent un nom unique,**_
+    >_@ 1 min 30 sec_
+[Video link upload](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST27-01-Query.mp4)

@@ -38,8 +38,7 @@
                     <ul class="list-inline">
                         {% for actor in program.actors %}
                             <li>
-                                <a class="text-dark" href="{{ path('actor_show', {'slug': actor.slug}) }}">
-                                    {{ actor.name }}, </a>
+                                {{ include('program/_actor.html.twig') }}
                             </li>
                         {% else %}
                             <li><strong>Aucun acteur pour cette série</strong></li>

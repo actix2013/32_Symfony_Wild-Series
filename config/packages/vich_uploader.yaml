@@ -13,6 +13,7 @@ vich_uploader:
             upload_destination: '%app.path.poster_destination%'
             delete_on_update:   true
             delete_on_remove:   true
+            inject_on_load: false
             namer: vich_uploader.namer_origname
 
         actorImg_file:
@@ -22,5 +23,6 @@ vich_uploader:
             upload_destination: '%app.path.actorImg_destination%'
             delete_on_update:   true
             delete_on_remove:   true
+            inject_on_load: false
             namer: vich_uploader.namer_origname
 

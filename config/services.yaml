@@ -9,7 +9,7 @@ parameters:
     app.path.poster_file: '/uploads/images/posters'
     app.path.poster_destination: '%kernel.project_dir%/public/%app.path.poster_file%'
     app.path.actorImg_file: '/uploads/images/actors'
-    app.path.actorImg_destination: '%kernel.project_dir%/public/%app.path.poster_file%'
+    app.path.actorImg_destination: '%kernel.project_dir%/public/%app.path.actorImg_file%'
 
 services:
     # default configuration for services in *this* file

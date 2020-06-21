@@ -1,0 +1,10 @@
+<div class="d-flex justify-content-start align-items-center align-content-center m-1 ">
+    {% if actor.image %}
+        <img width="40" src=" {{ actorImgPath ~ vich_uploader_asset(actor, 'actorImg') }}" alt="{{ actor.image }}"/>
+    {% else %}
+        <img width="40" src="{{ asset ('Img/icon/man-user_black.png') }}" alt=" NO IMG "/>
+    {% endif %}
+    <a class="ml-2 text-dark" href="{{ path('actor_show', {'slug': actor.slug}) }}">
+        {{ actor.name }} </a>
+</div>
+

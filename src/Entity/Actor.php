@@ -40,20 +40,21 @@ class Actor
     private $slug;
 
      /**
-     * @Vich\UploadableField(mapping="actor_image", fileNameProperty="image")
+     * @Vich\UploadableField(mapping="actorImg_file", fileNameProperty="image")
      * @var File
      */
-    private $imageFile;
+    private $actorImg;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $image;
 
     public function __construct()
     {
@@ -151,9 +152,28 @@ class Actor
     public function setImage(?string $image): self
     {
         $this->image = $image;
-        if ($image) {
-            $this->updatedAt = new \DateTime('now');
-        }
+
         return $this;
     }
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\File\File
+     */
+    public function getActorImg(): ?\Symfony\Component\HttpFoundation\File\File
+    {
+        return $this->actorImg;
+    }
+
+    /**
+     * @param \Symfony\Component\HttpFoundation\File\File $actorImg
+     */
+    public function setActorImg(\Symfony\Component\HttpFoundation\File\File $actorImg): void
+    {
+        if ($actorImg) {
+            $this->updatedAt = new \DateTime('now');
+        }
+        $this->actorImg = $actorImg;
+    }
+
+
 }
