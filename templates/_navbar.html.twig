@@ -14,8 +14,22 @@
             <li>
                 <a class="nav-link myButton " href="{{ path('wild_index') }}">Wild</a>
             </li>
-            <li>
-                <a class="nav-link myButton" href="{{ path('category_index') }}">Cat.</a>
+
+            <li class="nav-item dropdown rounded">
+                <a class="nav-link dropdown-toggle myButton" href="#" id="navbarDropdown" role="button"
+                   data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    Categories
+                </a>
+
+                <div class="dropdown-menu w-100 " aria-labelledby="navbarDropdown">
+
+                    {# if you don't want to expose the controller with a public URL,
+                       use the controller() function to define the controller to execute #}
+                    {{ render(controller(
+                        'App\\Controller\\CategoryController::cathegoryList', {max: 3}
+                    )) }}
+                </div>
             </li>
             <li>
                 <a class="nav-link myButton" href="{{ path('program_index') }}">{% trans %}_program_{% endtrans %}</a>
