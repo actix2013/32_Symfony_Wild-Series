@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Category;
 use App\Entity\Program;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -56,6 +57,19 @@ class ProgramRepository extends ServiceEntityRepository
         return $qb->execute();
     }
 
+    public function findAllByCategoryWithActors(Category $cat)
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->innerJoin('p.category', 'c')
+            ->where(":cat = c.name")
+            ->setParameter(":cat",$cat->getName())
+            ->leftJoin('p.actors', 'actors')
+            ->addSelect('c')
+            ->addSelect('actors')
+            ->getQuery();
+
+        return $qb->execute();
+    }
     /*
     public function findOneBySomeField($value): ?Program
     {

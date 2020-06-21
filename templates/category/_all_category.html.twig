@@ -1,0 +1,7 @@
+{% for category in categorys %}
+    <div class="d-flex justify-content-center align-content-stretch align-items-stretch m-3 bg-danger rounded shadow">
+        <a class="text-center text-white text-decoration-none" href=" {{ path('program_bycat', { "id" : category.id })}}">
+            {{ category.name
+                }}</a>
+    </div>
+{% endfor %}
