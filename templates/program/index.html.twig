@@ -38,8 +38,7 @@
                     <ul class="list-inline">
                         {% for actor in program.actors %}
                             <li>
-                                <a class="text-dark" href="{{ path('actor_show', {'slug': actor.slug}) }}">
-                                    {{ actor.name }}, </a>
+                                {{ include('program/_actor.html.twig') }}
                             </li>
                         {% else %}
                             <li><strong>Aucun acteur pour cette série</strong></li>
@@ -63,12 +62,17 @@
                         </div>
                     </td>
                     <td>
+                        {% if app.user %}
                         {% set way = app.request.schemeAndHttpHost ~ path('program_watchlist', {'id': program.id}) %}
                         <div class="mr-1 iconSize50">
                             <i id="watchList-{{ program.id }}"
-                               class="{{ app.user.isInWatchlist(program) ? 'fas' : 'far' }} fa-heart watchlist"
+                               class="{{ app.user.isInWatchlist(program) ? 'fas' : 'far' }} fa-heart
+                               watchlist"
                                data-href="{{ way }}"></i>
                         </div>
+                            {% else %}
+                            <p>Please Login for use</p>
+                        {% endif %}
                     </td>
                 </tr>
             {% else %}

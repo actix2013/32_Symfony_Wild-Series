@@ -7,3 +7,6 @@ twig:
         # point this wherever your images live
         '%kernel.project_dir%/public/Img': images
         '%kernel.project_dir%/public/build': css
+    globals:
+        posterPath: '%app.path.poster_file%/'
+        actorImgPath: '%app.path.actorImg_file%/'

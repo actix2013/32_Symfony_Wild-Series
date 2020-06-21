@@ -28,20 +28,37 @@
 
                 <ul class="list-inline">
                     {% for program in actor.programs %}
-                    <li>
+                        <li>
                             <div class="d-flex justify-content-between bg-white border border-dark rounded">
-                                <a class="text-danger pt-3 pl-5" href="{{ path('program_show', {'slug': program.slug})
-                                }}">
+                                <a class="text-danger pt-3 pl-5"
+                                   href="{{ path('program_show', {'slug': program.slug}) }}">
                                     {{ program.title }} </a>
                                 <img class="rounded border border-white" src="{{ program.poster }}"
                                      width="120"/>
                             </div>
-                    </li>
+                        </li>
 
-            {% else %}
-                <li>Aucune série pour cet acteur.</li>
-            {% endfor %}
-            </ul>
+                    {% else %}
+                        <li>Aucune série pour cet acteur.</li>
+                    {% endfor %}
+                </ul>
+
+
+            </td>
+        </tr>
+        <tr>
+            <th>Photo</th>
+            <td>
+                <div class="d-flex justify-content-start align-items-center align-content-center m-1 ">
+                    {% if actor.image %}
+                        <img width="40" src=" {{ actorImgPath ~ vich_uploader_asset(actor, 'actorImg') }}"
+                             alt="{{ actor.image }}"/>
+                    {% else %}
+                        <img width="40" src="{{ asset ('Img/icon/man-user_black.png') }}" alt=" NO IMG "/>
+                    {% endif %}
+                    <a class="ml-2 text-dark" href="{{ path('actor_show', {'slug': actor.slug}) }}">
+                        {{ actor.name }} </a>
+                </div>
 
 
             </td>

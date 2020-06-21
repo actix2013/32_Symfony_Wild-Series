@@ -75,3 +75,7 @@ yarn-error.log
 ###< symfony/webpack-encore-bundle ###
 /scripts/
 /.idea/
+
+###> liip/imagine-bundle ###
+/public/media/cache/
+###< liip/imagine-bundle ###
