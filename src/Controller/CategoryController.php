@@ -100,5 +100,21 @@ public function add(Request $request): Response
         ]);
     }
 
+    /**
+     * @Route("/", name="index")
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @IsGranted("IS_AUTHENTICATED_ANONYMOUSLY")
+     */
+    public function cathegoryList()
+    {
+        $pageTitle = "List of category :";
+        $doctrine = $this->getDoctrine();
+        $repository = $doctrine->getRepository(Category::class);
+        $categorys = $repository->findAll();
+        return $this->render('category/_all_category.html.twig', ["categorys" => $categorys ]);
+    }
+
+
+
 
 }

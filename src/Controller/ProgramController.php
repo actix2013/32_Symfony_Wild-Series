@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\Program;
 use App\Entity\Comment;
 use App\Form\ProgramType;
@@ -31,7 +32,7 @@ class ProgramController extends AbstractController
 {
     /**
      * @Route("/", name="program_index", methods={"GET"})
-     * @IsGranted("ROLE_SUBSCRIBER")
+     * @IsGranted("ROLE_USER")
      */
     public function index(ProgramRepository $programRepository, SessionInterface $session): Response
     {
@@ -96,6 +97,20 @@ class ProgramController extends AbstractController
         return $this->render('program/new.html.twig', [
             'program' => $program,
             'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/cat/{id}<[0-9]{1,6}>", name="program_bycat", methods={"GET"})
+     * @IsGranted("IS_AUTHENTICATED_ANONYMOUSLY")
+     */
+    public function categoryProgram(Category $category, ProgramRepository $programRepository): Response
+    {
+
+        $programs = $programRepository->findAllByCategoryWithActors($category);
+        return $this->render('program/index.html.twig', [
+            //'programs' => $programRepository->findAllWithCategories(),
+            'programs' => $programs,
         ]);
     }
 
@@ -179,4 +194,6 @@ class ProgramController extends AbstractController
             'isInWatchlist' => $this->getUser()->isInWatchlist($program)
         ]);
     }
+
+
 }

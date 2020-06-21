@@ -254,4 +254,15 @@ __Quest 24: Symfony : Requêtes personnalisées.__
     >_ 0 min 45 sec_
 
 [Video link Query](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST24-01-Query.mp4)
-ss
+
+
+***
+***
+__Quest 26: embeded controler__ 
+
+- [X] _**La liste des catégories dans la navbar fonctionne,**_
+    >_@ 0 min 9 sec_
+- [X] _**En cliquant sur une des catégories, j’accède bien aux séries liées,**_
+    >_@ 0 min 11 sec_
+[Video link embeded controler](https://filedn.com/lRT6JcS1sB0bW0nKVxQpO0b/WildCodeSchiool/GC-SYMFONY-QUEST26-01-Query.mp4)
+
