@@ -87,7 +87,7 @@ class Program
     private $posterFile;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime" , nullable=true)
      */
     private $updatedAt;
 
@@ -143,7 +143,6 @@ class Program
     public function setPoster(string $poster): self
     {
         $this->poster = $poster;
-
         return $this;
     }
 
